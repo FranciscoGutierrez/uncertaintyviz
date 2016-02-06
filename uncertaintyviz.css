@@ -1,0 +1,79 @@
+/* CSS declarations go here */
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 13px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 24px;
+  color: #34495e;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 14px;
+  color: #7f8c8d;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 18px;
+  color: #7f8c8d;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.top {
+  max-width: 580px;
+  min-width: 580px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.middle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #ecf0f1;
+  max-width: 600px;
+  min-width: 600px;
+  max-height: 500px;
+  min-height: 500px;
+}
+
+.bottom {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.button-begin {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  border: 1px solid #bdc3c7;
+}
+
+.image {
+  background: #ecf0f1;
+  max-width: 400px;
+  min-width: 400px;
+  max-height: 400px;
+  min-height: 400px;
+  background-image: url("demo.png");
+}

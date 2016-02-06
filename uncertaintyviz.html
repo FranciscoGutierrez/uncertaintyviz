@@ -1,0 +1,29 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  <title>uncertaintyviz</title>
+  <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto:900,400,300,100' type='text/css'>
+  <link rel="import" href="bower_components/paper-button/paper-button.html">
+</head>
+<body>
+  <div class="container">
+    <div class="top">
+      <h1>Welcome to this evaluation!</h1>
+      <h2>Ready? Please, click the start button.</h2>
+      <paper-button class="button-begin">Start</paper-button>
+    </div>
+    <div class="middle">
+      {{> regression}}
+    </div>
+    <div class="bottom">
+      <h1>Based in the dot position,</h1>
+        <h2>What is your confidence level?</h2>
+    </div>
+  </div>
+</body>
+
+<template name="regression">
+  <div class="image"></div>
+  <div class="dot-container"></div>
+</template>
