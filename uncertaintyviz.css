@@ -4,6 +4,13 @@
   padding: 0px;
   font-family: Roboto, Arial, sans-serif;
   font-size: 13px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
 }
 
 body {
@@ -16,6 +23,22 @@ h1 {
   font-weight: 100;
   font-size: 24px;
   color: #34495e;
+}
+
+h1 u {
+  font-weight: 100;
+  font-size: 24px;
+  color: #7f8c8d;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+h1 u:hover {
+  font-weight: 100;
+  font-size: 24px;
+  color: #34495e;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 h2 {
@@ -32,14 +55,15 @@ h3 {
 
 .container {
   display: flex;
-  justify-content: center;
-  align-content: center;
+  justify-content:center;
+  align-items:  center;
   flex-direction: column;
+  width: 100%;
 }
 
 .top {
-  max-width: 580px;
-  min-width: 580px;
+  max-width: 600px;
+  min-width: 600px;
   padding-top: 20px;
   padding-bottom: 20px;
   position: relative;
@@ -50,17 +74,20 @@ h3 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
   background: #ecf0f1;
-  max-width: 600px;
-  min-width: 600px;
   max-height: 450px;
   min-height: 450px;
+  width: 100%;
 }
 
 .bottom {
-  position: relative;
+  display: none;
+  max-width: 600px;
+  min-width: 600px;
   padding-top: 20px;
   padding-bottom: 20px;
+  position: relative;
 }
 
 .button-begin {
@@ -70,11 +97,47 @@ h3 {
   border: 1px solid #bdc3c7;
 }
 
+.button-next {
+  position: absolute;
+  right: 0;
+  bottom: 50%;
+  border: 1px solid #bdc3c7;
+}
+
+paper-button:hover {
+  background: #ecf0f1;
+}
+
 .image {
+  display: none;
   background: #ecf0f1;
   max-width: 400px;
   min-width: 400px;
   max-height: 400px;
   min-height: 400px;
   background-image: url("demo.png");
+}
+
+.tiny-dot {
+  display: none;
+  background: rebeccapurple;
+  border: 1px solid #9b59b6;
+  box-shadow: 0px 0px 6px #424242;
+  min-width:  12px;
+  min-height: 12px;
+  max-width:  12px;
+  max-height: 12px;
+  border-radius: 50%;
+  position: absolute;
+  right: 50%;
+  top: 50%;
+}
+
+paper-radio-button {
+  padding-top: 20px;
+  color: #424242;
+}
+
+.chart-dummy {
+  width: 400px;
 }
