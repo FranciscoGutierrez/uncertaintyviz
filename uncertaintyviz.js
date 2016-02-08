@@ -6,7 +6,7 @@ if (Meteor.isClient) {
       return Session.get('counter');
     }
   });
-
+ /***/
   Template.top.events({
     'click .button-begin': function () {
       $(".chart-dummy").fadeOut(function(){
