@@ -28,7 +28,7 @@ h1 {
 h1 u {
   font-weight: 100;
   font-size: 24px;
-  color: #7f8c8d;
+  color: rebeccapurple;
   text-decoration: none;
   cursor: pointer;
 }
@@ -43,7 +43,7 @@ h1 u:hover {
 
 h2 {
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   color: #7f8c8d;
 }
 
@@ -110,6 +110,7 @@ paper-button:hover {
 
 .image {
   display: none;
+  position: relative;
   background: #ecf0f1;
   max-width: 400px;
   min-width: 400px;
@@ -129,8 +130,6 @@ paper-button:hover {
   max-height: 12px;
   border-radius: 50%;
   position: absolute;
-  right: 50%;
-  top: 50%;
 }
 
 paper-radio-button {

@@ -45,8 +45,9 @@
 <template name="middle">
   <div class="middle">
     <iron-icon class="chart-dummy" icon="editor:insert-chart"></iron-icon>
-    <div class="image"></div>
-    <div class="tiny-dot animated flash"></div>
+    <div class="image">
+      <div class="tiny-dot animated flash"></div>
+    </div>
   </div>
 </template>
 
@@ -55,11 +56,11 @@
     <h1>Based in the <u>highlighted</u> dot position,</h1>
     <h2>What is your confidence level?</h2>
     <paper-radio-group selected="">
-          <paper-radio-button name="vlow"    label="vlow"    class="rb radio-vlow"   >Very Low</paper-radio-button>
-          <paper-radio-button name="low"     label="low"     class="rb radio-low"    >Low</paper-radio-button>
-          <paper-radio-button name="regular" label="regular" class="rb radio-regular">Regular</paper-radio-button>
-          <paper-radio-button name="high"    label="high"    class="rb radio-high"   >High</paper-radio-button>
-          <paper-radio-button name="vhigh"   label="vhigh"   class="rb radio-vhigh"  >Very High</paper-radio-button>
+    <paper-radio-button name="vlow"    label="vlow"    class="rb radio-vlow"   >Very Low</paper-radio-button>
+    <paper-radio-button name="low"     label="low"     class="rb radio-low"    >Low</paper-radio-button>
+    <paper-radio-button name="regular" label="regular" class="rb radio-regular">Regular</paper-radio-button>
+    <paper-radio-button name="high"    label="high"    class="rb radio-high"   >High</paper-radio-button>
+    <paper-radio-button name="vhigh"   label="vhigh"   class="rb radio-vhigh"  >Very High</paper-radio-button>
     </paper-radio-group>
     <paper-button class="button-next">Next</paper-button>
   </div>
