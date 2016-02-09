@@ -13,7 +13,16 @@ if (Meteor.isClient) {
     'click .button-begin': function () {
       console.log(Router.current().originalUrl);
       console.log(Meteor.connection._lastSessionId);
-      $(".q1").fadeIn();
+      console.log(Session.get("evaluation"));
+      if(Session.get("evaluation") == "cluster") {
+
+      }
+      if(Session.get("evaluation") == "regression") {
+        $(".q1").fadeIn();
+      }
+      if(Session.get("evaluation") == "both") {
+
+      }
       $(".chart-dummy").fadeOut(function(){
         $(".top h2").text("Please, answer the questions below the chart.");
         $(".button-begin").fadeOut();
@@ -82,10 +91,10 @@ if (Meteor.isClient) {
     },
     'click .button-next': function () {
       if(!Session.get("answer")){
-        $("paper-radio-button").addClass('animated flash');
+        $("paper-radio-button").addClass('animated pulse');
         var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
         $("paper-radio-button").one(animationEnd, function(){
-          $(this).removeClass('animated flash');
+          $(this).removeClass('animated pulse');
         });
       } else {
         $(".tiny-dot").css("right",_.random(20, 80)+"%");
@@ -104,6 +113,17 @@ if (Meteor.isClient) {
           $(".q2").fadeIn();
         });
       }
+    },
+    'click .button-finish': function () {
+      $(".image").fadeOut();
+      $(".question").fadeOut(function(){
+        $(".button-finish").fadeOut(function(){
+          $(".top h1").fadeOut();
+          $(".top h2").fadeOut();
+          $(".chart-dummy").fadeIn();
+          $(".thanks").fadeIn();
+        });
+      });
     }
   });
 }

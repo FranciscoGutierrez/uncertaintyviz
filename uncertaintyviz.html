@@ -53,7 +53,7 @@
 
 <template name="bottom">
   <div class="bottom">
-    <div class="question q1" style="display: none;">
+    <div class="question q1 animated fadeInDown" style="display: none;">
       <h1>Based in the <u>highlighted</u> dot position,</h1>
       <h2>What is your confidence level?</h2>
       <paper-radio-group selected="">
@@ -64,7 +64,7 @@
         <paper-radio-button name="vhigh"   label="vhigh"   class="rb radio-vhigh"  >Very High</paper-radio-button>
       </paper-radio-group>
     </div>
-    <div class="question q2" style="display: none;">
+    <div class="question q2 animated fadeInDown" style="display: none;">
       <h1>Based in the <u>highlighted</u> dot position,</h1>
       <h2>What is the most confident area?</h2>
       <paper-radio-group selected="">
@@ -74,6 +74,10 @@
         <paper-radio-button name="high"    label="high"    class="rb radio-high"   >D</paper-radio-button>
         <paper-radio-button name="vhigh"   label="vhigh"   class="rb radio-vhigh"  >E</paper-radio-button>
       </paper-radio-group>
+    </div>
+    <div class="thanks animated fadeInDown" style="display: none;">
+      <h1>Thank you, one last thing!</h1>
+      <h2>Please, <a href="http://goo.gl/forms/nF9eEM8ibX">click here</a> to answer a short questionnaire.</h2>
     </div>
     <paper-button class="button-next">Next</paper-button>
     <paper-button class="button-finish">Finish</paper-button>
