@@ -85,6 +85,8 @@ h3 {
   display: none;
   max-width: 600px;
   min-width: 600px;
+  max-height: 100px;
+  min-height: 100px;
   padding-top: 20px;
   padding-bottom: 20px;
   position: relative;
@@ -98,6 +100,14 @@ h3 {
 }
 
 .button-next {
+  position: absolute;
+  right: 0;
+  bottom: 50%;
+  border: 1px solid #bdc3c7;
+}
+
+.button-finish {
+  display: none;
   position: absolute;
   right: 0;
   bottom: 50%;

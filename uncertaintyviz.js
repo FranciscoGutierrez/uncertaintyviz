@@ -8,11 +8,12 @@ if (Meteor.isClient) {
       return Session.get('counter');
     }
   });
- /***/
+  /***/
   Template.top.events({
     'click .button-begin': function () {
       console.log(Router.current().originalUrl);
       console.log(Meteor.connection._lastSessionId);
+      $(".q1").fadeIn();
       $(".chart-dummy").fadeOut(function(){
         $(".top h2").text("Please, answer the questions below the chart.");
         $(".button-begin").fadeOut();
@@ -81,13 +82,27 @@ if (Meteor.isClient) {
     },
     'click .button-next': function () {
       if(!Session.get("answer")){
-        $("paper-radio-button").addClass('animated pulse');
+        $("paper-radio-button").addClass('animated flash');
         var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
         $("paper-radio-button").one(animationEnd, function(){
-          $(this).removeClass('animated pulse');
+          $(this).removeClass('animated flash');
         });
       } else {
-        console.log("next question...")
+        $(".tiny-dot").css("right",_.random(20, 80)+"%");
+        $(".tiny-dot").css("top",  _.random(20, 75)+"%");
+        $(".question").fadeOut(function(){
+          $(".tiny-dot").addClass('animated flash');
+          var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+          $(".tiny-dot").one(animationEnd, function(){
+            $(this).removeClass('animated flash');
+          });
+        });
+        $(".q1").fadeOut(function(){
+          $(".button-next").fadeOut(function(){
+            $(".button-finish").fadeIn();
+          });
+          $(".q2").fadeIn();
+        });
       }
     }
   });
