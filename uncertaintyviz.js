@@ -93,13 +93,20 @@ if (Meteor.isClient) {
       Session.set('answer',5);
     },
     'click .button-next': function () {
-      if(!Session.get("answer")){
-        $("paper-radio-button").addClass('animated pulse');
-        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-        $("paper-radio-button").one(animationEnd, function(){
-          $(this).removeClass('animated pulse');
-        });
-      } else {
+      if(Session.get("answer")){
+        /**
+        Save to the database; if sucessful, proceed.
+        **/
+
+        /**
+        Reset session variables...
+        **/
+        Session.setDefault("question", "");
+        Session.setDefault("answer", "");
+
+        /**
+        Re-assing dot position.
+        **/
         $(".tiny-dot").css("right",_.random(20, 80)+"%");
         $(".tiny-dot").css("top",  _.random(20, 75)+"%");
         $(".question").fadeOut(function(){
@@ -109,11 +116,20 @@ if (Meteor.isClient) {
             $(this).removeClass('animated flash');
           });
         });
+        /**
+        Fade in new question...
+        **/
         $(".q1").fadeOut(function(){
           $(".button-next").fadeOut(function(){
             $(".button-finish").fadeIn();
           });
           $(".q2").fadeIn();
+        });
+      } else {
+        $("paper-radio-button").addClass('animated pulse');
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        $("paper-radio-button").one(animationEnd, function(){
+          $(this).removeClass('animated pulse');
         });
       }
     },
