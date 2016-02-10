@@ -282,7 +282,7 @@ if (Meteor.isClient) {
 
         Users.insert({
           "sessionId": Meteor.connection._lastSessionId,
-          "timestampSt": Session.get("timest"),
+          "timestampSt": Session.get("timest").getTime(),
           "timestampEd": now.getTime(),
           "timeSpent" : now.getTime() - Session.get("timest").getTime(),
           "evaluation": Session.get("evaluation")
@@ -319,7 +319,6 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Users     = new Meteor.Collection('users');
   Questions = new Meteor.Collection('questions');
-
   Meteor.startup(function () {
 
   });
