@@ -15,13 +15,16 @@ if (Meteor.isClient) {
       console.log(Meteor.connection._lastSessionId);
       console.log(Session.get("evaluation"));
       if(Session.get("evaluation") == "cluster") {
-
+        $(".q6").fadeIn();
+        $(".image").css("background-image","url('cluster/q6.png')");
       }
       if(Session.get("evaluation") == "regression") {
         $(".q1").fadeIn();
+        $(".image").css("background-image","url('regression/q1.png')");
       }
       if(Session.get("evaluation") == "both") {
-
+        $(".q1").fadeIn();
+        $(".image").css("background-image","url('regression/q1.png')");
       }
       $(".chart-dummy").fadeOut(function(){
         $(".top h2").text("Please, answer the questions below the chart.");
@@ -121,7 +124,16 @@ if (Meteor.isClient) {
           $(".top h1").fadeOut();
           $(".top h2").fadeOut();
           $(".chart-dummy").fadeIn();
-          $(".thanks").fadeIn();
+          if(Session.get("evaluation") == "cluster") {
+            $(".thankscluster").fadeIn();
+          }
+          if(Session.get("evaluation") == "regression") {
+            $(".thanksregression").fadeIn();
+          }
+          if(Session.get("evaluation") == "both") {
+            $(".thanksboth").fadeIn();
+          }
+
         });
       });
     }
