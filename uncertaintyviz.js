@@ -2,7 +2,6 @@ if (Meteor.isClient) {
   //Data
   Users     = new Meteor.Collection('users');
   Questions = new Meteor.Collection('questions');
-
   var now = new Date();
   Session.setDefault("question", "");
   Session.setDefault("answer", "");
@@ -19,9 +18,10 @@ if (Meteor.isClient) {
   **/
   Template.top.events({
     'click .button-begin': function () {
-      console.log(Router.current().originalUrl);
-      console.log(Meteor.connection._lastSessionId);
-      console.log(Session.get("evaluation"));
+      /*
+      * Generate a Random number between 1-15;
+      */
+      Session.set("dot",_.random(1, 15));
       if(Session.get("evaluation") == "regression") {
         $(".q1").fadeIn();
         $(".image").css("background-image","url('regression/q1.png')");
@@ -48,16 +48,215 @@ if (Meteor.isClient) {
         $(".button-begin").fadeOut();
         $(".image").fadeIn( function(){
           $(".bottom").fadeIn();
-          $(".tiny-dot").css("right",_.random(20, 80)+"%");
-          $(".tiny-dot").css("top",  _.random(20, 75)+"%");
-          $(".tiny-dot").fadeIn( function(){
+
+          if(Session.get("evaluation") == "regression") {
+            /**/
             var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-            $(".tiny-dot").one(animationEnd, function(){
-              $(this).removeClass('animated flash');
+            /**/
+            $(".d1").css("top","87%");
+            $(".d1").css("left","13%");
+            $(".d1").fadeIn( function(){
+              if(Session.get("dot")!=1) {
+                $(".d1").one(animationEnd, function(){
+                  $(this).removeClass('animated fadeIn');
+                  $(".d1").css("box-shadow","0px 0px 0px #424242");
+                });
+              } else {
+                $(".d1").addClass("infinite flash");
+              }
             });
-          });
+
+            $(".d2").css("top","53%");
+            $(".d2").css("left","80%");
+            $(".d2").fadeIn( function(){
+              if(Session.get("dot")!=2) {
+                $(".d2").one(animationEnd, function(){
+                  $(this).removeClass('animated fadeIn');
+                  $(".d2").css("box-shadow","0px 0px 0px #424242");
+                });
+              } else {
+                $(".d2").addClass("infinite flash");
+              }
+            });
+
+            $(".d3").css("top","67%");
+            $(".d3").css("left","30%");
+            $(".d3").fadeIn( function(){
+              if(Session.get("dot")!=3) {
+                $(".d3").one(animationEnd, function(){
+                  $(this).removeClass('animated fadeIn');
+                  $(".d3").css("box-shadow","0px 0px 0px #424242");
+                });
+              } else {
+                $(".d3").addClass("infinite flash");
+              }
+            });
+
+            $(".d4").css("top","40%");
+            $(".d4").css("left","40%");
+            $(".d4").fadeIn( function(){
+              if(Session.get("dot")!=4) {
+                $(".d4").one(animationEnd, function(){
+                  $(this).removeClass('animated fadeIn');
+                  $(".d4").css("box-shadow","0px 0px 0px #424242");
+                });
+              } else {
+                $(".d4").addClass("infinite flash");
+              }
+            });
+
+            $(".d5").css("top","50%");
+            $(".d5").css("left","50%");
+            $(".d5").fadeIn( function(){
+              if(Session.get("dot")!=5) {
+                $(".d5").one(animationEnd, function(){
+                  $(this).removeClass('animated fadeIn');
+                  $(".d5").css("box-shadow","0px 0px 0px #424242");
+                });
+              } else {
+                $(".d5").addClass("infinite flash");
+              }
+            });
+
+            $(".d6").css("top","66%");
+            $(".d6").css("left","38%");
+            $(".d6").fadeIn( function(){
+              if(Session.get("dot")!=6) {
+                $(".d6").one(animationEnd, function(){
+                  $(this).removeClass('animated fadeIn');
+                  $(".d6").css("box-shadow","0px 0px 0px #424242");
+                });
+              } else {
+                $(".d6").addClass("infinite flash");
+              }
+            });
+
+            $(".d7").css("top","28%");
+            $(".d7").css("left","70%");
+            $(".d7").fadeIn( function(){
+              if(Session.get("dot")!=7) {
+                $(".d7").one(animationEnd, function(){
+                  $(this).removeClass('animated fadeIn');
+                  $(".d7").css("box-shadow","0px 0px 0px #424242");
+                });
+              } else {
+                $(".d7").addClass("infinite flash");
+              }
+            });
+
+            $(".d8").css("top","58%");
+            $(".d8").css("right","71%");
+            $(".d8").fadeIn( function(){
+              if(Session.get("dot")!=8) {
+                $(".d8").one(animationEnd, function(){
+                  $(this).removeClass('animated fadeIn');
+                  $(".d8").css("box-shadow","0px 0px 0px #424242");
+                });
+              } else {
+                $(".d8").addClass("infinite flash");
+              }
+            });
+
+            $(".d9").css("top","40%");
+            $(".d9").css("right","12%");
+            $(".d9").fadeIn( function(){
+              if(Session.get("dot")!=9) {
+                $(".d9").one(animationEnd, function(){
+                  $(this).removeClass('animated fadeIn');
+                  $(".d9").css("box-shadow","0px 0px 0px #424242");
+                });
+              } else {
+                $(".d9").addClass("infinite flash");
+              }
+            });
+
+            $(".d10").css("top","68%");
+            $(".d10").css("right","80%");
+            $(".d10").fadeIn( function(){
+              if(Session.get("dot")!=10) {
+                $(".d10").one(animationEnd, function(){
+                  $(this).removeClass('animated fadeIn');
+                  $(".d10").css("box-shadow","0px 0px 0px #424242");
+                });
+              } else {
+                $(".d10").addClass("infinite flash");
+              }
+            });
+
+            $(".d11").css("top","38%");
+            $(".d11").css("right","38%");
+            $(".d11").fadeIn( function(){
+              if(Session.get("dot")!=11) {
+                $(".d11").one(animationEnd, function(){
+                  $(this).removeClass('animated fadeIn');
+                  $(".d11").css("box-shadow","0px 0px 0px #424242");
+                });
+              } else {
+                $(".d11").addClass("infinite flash");
+              }
+            });
+
+            $(".d12").css("top","80%");
+            $(".d12").css("right","77%");
+            $(".d12").fadeIn( function(){
+              if(Session.get("dot")!=12) {
+                $(".d12").one(animationEnd, function(){
+                  $(this).removeClass('animated fadeIn');
+                  $(".d12").css("box-shadow","0px 0px 0px #424242");
+                });
+              } else {
+                $(".d12").addClass("infinite flash");
+              }
+            });
+
+            $(".d13").css("top","58%");
+            $(".d13").css("right","36%");
+            $(".d13").fadeIn( function(){
+              if(Session.get("dot")!=13) {
+                $(".d13").on(animationEnd, function(){
+                  $(this).removeClass('animated fadeIn');
+                  $(".d13").css("box-shadow","0px 0px 0px #424242");
+                });
+              } else {
+                $(".d13").addClass("infinite flash");
+              }
+            });
+
+            $(".d14").css("top","22%");
+            $(".d14").css("right","8%");
+            $(".d14").fadeIn( function(){
+              if(Session.get("dot")!=14) {
+                $(".d14").one(animationEnd, function(){
+                  $(this).removeClass('animated fadeIn');
+                  $(".d14").css("box-shadow","0px 0px 0px #424242");
+                });
+              } else {
+                $(".d14").addClass("infinite flash");
+              }
+            });
+
+            $(".d15").css("top","41%");
+            $(".d15").css("right","27%");
+            $(".d15").fadeIn( function(){
+              if(Session.get("dot")!=15) {
+                $(".d15").one(animationEnd, function(){
+                  $(this).removeClass('animated fadeIn');
+                  $(".d15").css("box-shadow","0px 0px 0px #424242");
+                });
+              } else {
+                $(".d15").addClass("infinite flash");
+              }
+            });
+
+          }
         });
       });
+    }
+  });
+
+  Template.middle.events({
+    'click .dot.infinite': function () {
+      console.log("asd");
     }
   });
 
@@ -119,31 +318,20 @@ if (Meteor.isClient) {
           "sessionId": Meteor.connection._lastSessionId,
           "question": Session.get("question"),
           "answer": Session.get("answer"),
-          "dotx": $(".tiny-dot").position().left,
-          "doty": 400 - $(".tiny-dot").position().top,
+          "dotx": $(".dot").position().left,
+          "doty": 400 - $(".dot").position().top,
           "timestampSt": Session.get("timestq").getTime(),
           "timestampEd": now.getTime(),
           "timespent": now.getTime() - Session.get("timestq").getTime(),
           "evaluation": Session.get("evaluation")
         });
         Session.set("timestq",now);
-
         /**
-        Reset session variables...
+        Reset session variables and highlight a random dot...
         **/
         Session.set("answer", "");
-        /**
-        Re-assing dot position.
-        **/
-        $(".tiny-dot").css("right",_.random(20, 80)+"%");
-        $(".tiny-dot").css("top",  _.random(20, 75)+"%");
-        $(".question").fadeOut(function(){
-          $(".tiny-dot").addClass('animated flash');
-          var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-          $(".tiny-dot").one(animationEnd, function(){
-            $(this).removeClass('animated flash');
-          });
-        });
+        Session.set("dot",_.random(1, 15));
+        /**/
         /**
         Fade in new question...
         **/
@@ -205,7 +393,6 @@ if (Meteor.isClient) {
           }
         }
 
-
         if(Session.get("question")==5) {
           $(".q5").fadeOut(function(){
             // $(".button-finish").fadeIn();
@@ -256,11 +443,85 @@ if (Meteor.isClient) {
             });
           });
         }
+
+        /******/
+        $(".question").fadeOut(function(){
+          $(".dot").removeClass("animated infinite flash");
+          $(".dot").css("box-shadow","0px 0px 0px #424242");
+          if(Session.get("dot")==1) {
+            $(".d1").addClass('animated infinite flash');
+            $(".d1").css("box-shadow","0px 0px 6px #424242");
+          }
+          if(Session.get("dot")==2) {
+            $(".d2").addClass('animated infinite flash');
+            $(".d2").css("box-shadow","0px 0px 6px #424242");
+          }
+          if(Session.get("dot")==3) {
+            $(".d3").addClass('animated infinite flash');
+            $(".d3").css("box-shadow","0px 0px 6px #424242");
+          }
+          if(Session.get("dot")==4) {
+            $(".d4").addClass('animated infinite flash');
+            $(".d4").css("box-shadow","0px 0px 6px #424242");
+          }
+          if(Session.get("dot")==5) {
+            $(".d5").addClass('animated infinite flash');
+            $(".d5").css("box-shadow","0px 0px 6px #424242");
+          }
+          if(Session.get("dot")==6) {
+            $(".d6").addClass('animated infinite flash');
+            $(".d6").css("box-shadow","0px 0px 6px #424242");
+          }
+          if(Session.get("dot")==7) {
+            $(".d7").addClass('animated infinite flash');
+            $(".d7").css("box-shadow","0px 0px 6px #424242");
+          }
+          if(Session.get("dot")==8) {
+            $(".d8").addClass('animated infinite flash');
+            $(".d8").css("box-shadow","0px 0px 6px #424242");
+          }
+          if(Session.get("dot")==9) {
+            $(".d9").addClass('animated infinite flash');
+            $(".d9").css("box-shadow","0px 0px 6px #424242");
+          }
+          if(Session.get("dot")==10) {
+            $(".d10").addClass('animated infinite flash');
+            $(".d10").css("box-shadow","0px 0px 6px #424242");
+          }
+          if(Session.get("dot")==11) {
+            $(".d11").addClass('animated infinite flash');
+            $(".d11").css("box-shadow","0px 0px 6px #424242");
+          }
+          if(Session.get("dot")==12) {
+            $(".d12").addClass('animated infinite flash');
+            $(".d12").css("box-shadow","0px 0px 6px #424242");
+          }
+          if(Session.get("dot")==13) {
+            $(".d13").addClass('animated infinite flash');
+            $(".d13").css("box-shadow","0px 0px 6px #424242");
+          }
+          if(Session.get("dot")==14) {
+            $(".d14").addClass('animated infinite flash');
+            $(".d14").css("box-shadow","0px 0px 6px #424242");
+          }
+          if(Session.get("dot")==15) {
+            $(".d15").addClass('animated infinite flash');
+            $(".d15").css("box-shadow","0px 0px 6px #424242");
+          }
+          // var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+          // $(".dot").one(animationEnd, function(){
+          //   $(this).removeClass('animated flash');
+          // });
+        });
+
+
+
+
       } else {
-        $("paper-radio-button").addClass('animated pulse');
+        $("paper-radio-button").addClass('animated bounce');
         var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
         $("paper-radio-button").one(animationEnd, function(){
-          $(this).removeClass('animated pulse');
+          $(this).removeClass('animated bounce');
         });
       }
     },
@@ -272,8 +533,8 @@ if (Meteor.isClient) {
           "sessionId": Meteor.connection._lastSessionId,
           "question": Session.get("question"),
           "answer": Session.get("answer"),
-          "dotx": $(".tiny-dot").position().left,
-          "doty": 400 - $(".tiny-dot").position().top,
+          "dotx": $(".dot").position().left,
+          "doty": 400 - $(".dot").position().top,
           "timestampSt": Session.get("timestq").getTime(),
           "timestampEd": now.getTime(),
           "timespent": now.getTime() - Session.get("timestq").getTime(),
@@ -306,10 +567,10 @@ if (Meteor.isClient) {
           });
         });
       } else {
-        $("paper-radio-button").addClass('animated pulse');
+        $("paper-radio-button").addClass('animated bounce');
         var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
         $("paper-radio-button").one(animationEnd, function(){
-          $(this).removeClass('animated pulse');
+          $(this).removeClass('animated bounce');
         });
       }
     }
