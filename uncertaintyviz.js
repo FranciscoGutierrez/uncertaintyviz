@@ -44,36 +44,57 @@ if (Meteor.isClient) {
       /*
       * Generate a Random number between 1-15;
       */
+      $(".top h2").text("Please, answer the following questions...")
       Session.set("dot",_.random(1, 15));
       if(Session.get("viz") == "blur") {
-
+        $(".button-begin").fadeOut();
         $(".chart-dummy").fadeOut(function(){
           $(".introduction").fadeIn();
         });
 
         $(".img-left").attr("src","viz/b1.png");
-        $(".img-right").attr("src","viz/b3.png");
-        $(".img-middle").attr("src","viz/b5.png");
+        $(".img-middle").attr("src","viz/b3.png");
+        $(".img-right").attr("src","viz/b5.png");
       }
       if(Session.get("viz") == "opacity") {
+        $(".button-begin").fadeOut();
+        $(".chart-dummy").fadeOut(function(){
+          $(".introduction").fadeIn();
+        });
+
         $(".img-left").attr("src","viz/o1.png");
-        $(".img-right").attr("src","viz/o3.png");
-        $(".img-middle").attr("src","viz/o5.png");
+        $(".img-middle").attr("src","viz/o3.png");
+        $(".img-right").attr("src","viz/o5.png");
       }
       if(Session.get("viz") == "grid") {
-        $(".img-left").attr("src","viz/g1.png");
-        $(".img-right").attr("src","viz/g3.png");
-        $(".img-middle").attr("src","viz/g5.png");
+        $(".button-begin").fadeOut();
+        $(".chart-dummy").fadeOut(function(){
+          $(".introduction").fadeIn();
+        });
+
+        $(".img-left").attr("src","viz/s1.png");
+        $(".img-middle").attr("src","viz/s3.png");
+        $(".img-right").attr("src","viz/s5.png");
       }
       if(Session.get("viz") == "lines") {
+        $(".button-begin").fadeOut();
+        $(".chart-dummy").fadeOut(function(){
+          $(".introduction").fadeIn();
+        });
+
         $(".img-left").attr("src","viz/l1.png");
-        $(".img-right").attr("src","viz/l3.png");
-        $(".img-middle").attr("src","viz/l5.png");
+        $(".img-middle").attr("src","viz/l3.png");
+        $(".img-right").attr("src","viz/l5.png");
       }
       if(Session.get("viz") == "texture") {
+        $(".button-begin").fadeOut();
+        $(".chart-dummy").fadeOut(function(){
+          $(".introduction").fadeIn();
+        });
+
         $(".img-left").attr("src","viz/t1.png");
-        $(".img-right").attr("src","viz/t3.png");
-        $(".img-middle").attr("src","viz/t5.png");
+        $(".img-middle").attr("src","viz/t3.png");
+        $(".img-right").attr("src","viz/t5.png");
       }
 
       //   if(Session.get("evaluation") == "regression") {
@@ -309,8 +330,14 @@ if (Meteor.isClient) {
   });
 
   Template.middle.events({
-    'click .dot.infinite': function () {
+    "click .dot.infinite": function(){
       console.log("asd");
+    },
+    "click .intro-next": function(){
+
+    },
+    "click .intro-slider": function(){
+      $(".intro-next").fadeIn();
     }
   });
 

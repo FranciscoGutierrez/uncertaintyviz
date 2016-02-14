@@ -35,7 +35,7 @@
   <div class="top">
     <h1>Welcome to this evaluation!</h1>
     <h2>Ready? Please, click the start button.</h2>
-    <paper-button class="button-begin">Start</paper-button>
+    <paper-button class="button-begin" style="display: none;">Start</paper-button>
   </div>
 </template>
 <template name="middle">
@@ -45,7 +45,7 @@
       <h1 style="font-size: 32px;">Guess the value</h1>
       <div class="intro-pictures">
         <div class="pic-left">
-          <img src="viz/t1.png" alt="Guess This" height="100" width="100" class="img-left">
+          <img src="viz/t1.png" alt="Less" height="100" width="100" class="img-left">
           <h3>Less Accurate</h3>
         </div>
         <div class="pic-center">
@@ -53,12 +53,12 @@
           <h3 style="color: #424242;">What is this?</h3>
         </div>
         <div class="pic-right">
-          <img src="viz/t5.png" alt="Right" height="100" width="100" class="img-right">
+          <img src="viz/t5.png" alt="More" height="100" width="100" class="img-right">
           <h3>More Accurate</h3>
         </div>
       </div>
-      <h2>Use the slider to provide an estimate</h2>
-      <paper-slider pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
+      <h2><b>Click</b> & <b>drag</b> the slider to provide an estimate</h2>
+      <paper-slider class="intro-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
       <paper-button class="intro-next" style="display: none;">Next</paper-button>
     </div>
     <div class="image">
