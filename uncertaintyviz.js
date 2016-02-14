@@ -9,6 +9,7 @@ if (Meteor.isClient) {
 
   /*questions*/
   Session.setDefault("questions", [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
+  Session.setDefault("intro", [1,2,3,4,5]);
   /* Answers */
   Session.setDefault("q1", "");
   Session.setDefault("q2", "");
@@ -31,21 +32,18 @@ if (Meteor.isClient) {
   Session.setDefault("a3", "");
   Session.setDefault("a4", "");
   Session.setDefault("a5", "");
-  // Template.bottom.helpers({
-  //   counter: function () {
-  //     return Session.get('counter');
-  //   }
-  // });
   /**
   Start button events...
   **/
   Template.top.events({
     'click .button-begin': function () {
+      $(".top h2").text("Please, answer the following questions...")
       /*
       * Generate a Random number between 1-15;
       */
-      $(".top h2").text("Please, answer the following questions...")
-      Session.set("dot",_.random(1, 15));
+      var o = Session.get("intro");
+      for(var j,x,i= o.length; i; j=Math.floor(Math.random()*i),x=o[--i],o[i]=o[j],o[j]=x);
+      Session.set("intro", o);
       if(Session.get("viz") == "blur") {
         $(".button-begin").fadeOut();
         $(".chart-dummy").fadeOut(function(){
@@ -53,7 +51,7 @@ if (Meteor.isClient) {
         });
 
         $(".img-left").attr("src","viz/b1.png");
-        $(".img-middle").attr("src","viz/b3.png");
+        $(".img-middle").attr("src","viz/b"+Session.get("intro")[0]+".png");
         $(".img-right").attr("src","viz/b5.png");
       }
       if(Session.get("viz") == "opacity") {
@@ -63,7 +61,7 @@ if (Meteor.isClient) {
         });
 
         $(".img-left").attr("src","viz/o1.png");
-        $(".img-middle").attr("src","viz/o3.png");
+        $(".img-middle").attr("src","viz/o"+Session.get("intro")[0]+".png");
         $(".img-right").attr("src","viz/o5.png");
       }
       if(Session.get("viz") == "grid") {
@@ -73,7 +71,7 @@ if (Meteor.isClient) {
         });
 
         $(".img-left").attr("src","viz/s1.png");
-        $(".img-middle").attr("src","viz/s3.png");
+        $(".img-middle").attr("src","viz/s"+Session.get("intro")[0]+".png");
         $(".img-right").attr("src","viz/s5.png");
       }
       if(Session.get("viz") == "lines") {
@@ -83,7 +81,7 @@ if (Meteor.isClient) {
         });
 
         $(".img-left").attr("src","viz/l1.png");
-        $(".img-middle").attr("src","viz/l3.png");
+        $(".img-middle").attr("src","viz/l"+Session.get("intro")[0]+".png");
         $(".img-right").attr("src","viz/l5.png");
       }
       if(Session.get("viz") == "texture") {
@@ -93,7 +91,7 @@ if (Meteor.isClient) {
         });
 
         $(".img-left").attr("src","viz/t1.png");
-        $(".img-middle").attr("src","viz/t3.png");
+        $(".img-middle").attr("src","viz/t"+Session.get("intro")[0]+".png");
         $(".img-right").attr("src","viz/t5.png");
       }
 
@@ -334,7 +332,7 @@ if (Meteor.isClient) {
       console.log("asd");
     },
     "click .intro-next": function(){
-
+      console.log($(".intro-slider").attr("value"));
     },
     "click .intro-slider": function(){
       $(".intro-next").fadeIn();
