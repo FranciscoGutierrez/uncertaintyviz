@@ -3,7 +3,7 @@ if (Meteor.isClient) {
   Users     = new Meteor.Collection('users');
   Questions = new Meteor.Collection('questions');
   var now = new Date();
-  Session.setDefault("question", "");
+  Session.setDefault("currentQuestion", 1);
   Session.set("currentIntro", 1);
   Session.setDefault("timest",now);
   Session.setDefault("timestq",now);
@@ -95,236 +95,14 @@ if (Meteor.isClient) {
         $(".img-middle").attr("src","viz/t"+Session.get("intro")[0]+".png");
         $(".img-right").attr("src","viz/t5.png");
       }
+    }
+  });
 
-      //   if(Session.get("evaluation") == "regression") {
-      //     $(".q1").fadeIn();
-      //     $(".image").css("background-image","url('regression/q1.png')");
-      //     Session.set("question", 1);
-      //     var now = new Date();
-      //     Session.set("timestq",now);
-      //   }
-      //   if(Session.get("evaluation") == "cluster") {
-      //     $(".q6").fadeIn();
-      //     $(".image").css("background-image","url('cluster/q6.png')");
-      //     Session.set("question", 6);
-      //     var now = new Date();
-      //     Session.set("timestq",now);
-      //   }
-      //   if(Session.get("evaluation") == "both") {
-      //     $(".q1").fadeIn();
-      //     $(".image").css("background-image","url('regression/q1.png')");
-      //     Session.set("question", 1);
-      //     var now = new Date();
-      //     Session.set("timestq",now);
-      //   }
-      //   $(".chart-dummy").fadeOut(function(){
-      //     $(".top h2").text("Please, answer the questions below the chart.");
-      //     $(".button-begin").fadeOut();
-      //     $(".image").fadeIn( function(){
-      //       $(".bottom").fadeIn();
-      //
-      //       if(Session.get("evaluation") == "regression") {
-      //         /**/
-      //         var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-      //         /**/
-      //         $(".d1").css("top","87%");
-      //         $(".d1").css("left","13%");
-      //         $(".d1").fadeIn( function(){
-      //           if(Session.get("dot")!=1) {
-      //             $(".d1").one(animationEnd, function(){
-      //               $(this).removeClass('animated fadeIn');
-      //               $(".d1").css("box-shadow","0px 0px 0px #424242");
-      //             });
-      //           } else {
-      //             $(".d1").addClass("infinite flash");
-      //           }
-      //         });
-      //
-      //         $(".d2").css("top","53%");
-      //         $(".d2").css("left","80%");
-      //         $(".d2").fadeIn( function(){
-      //           if(Session.get("dot")!=2) {
-      //             $(".d2").one(animationEnd, function(){
-      //               $(this).removeClass('animated fadeIn');
-      //               $(".d2").css("box-shadow","0px 0px 0px #424242");
-      //             });
-      //           } else {
-      //             $(".d2").addClass("infinite flash");
-      //           }
-      //         });
-      //
-      //         $(".d3").css("top","67%");
-      //         $(".d3").css("left","30%");
-      //         $(".d3").fadeIn( function(){
-      //           if(Session.get("dot")!=3) {
-      //             $(".d3").one(animationEnd, function(){
-      //               $(this).removeClass('animated fadeIn');
-      //               $(".d3").css("box-shadow","0px 0px 0px #424242");
-      //             });
-      //           } else {
-      //             $(".d3").addClass("infinite flash");
-      //           }
-      //         });
-      //
-      //         $(".d4").css("top","40%");
-      //         $(".d4").css("left","40%");
-      //         $(".d4").fadeIn( function(){
-      //           if(Session.get("dot")!=4) {
-      //             $(".d4").one(animationEnd, function(){
-      //               $(this).removeClass('animated fadeIn');
-      //               $(".d4").css("box-shadow","0px 0px 0px #424242");
-      //             });
-      //           } else {
-      //             $(".d4").addClass("infinite flash");
-      //           }
-      //         });
-      //
-      //         $(".d5").css("top","50%");
-      //         $(".d5").css("left","50%");
-      //         $(".d5").fadeIn( function(){
-      //           if(Session.get("dot")!=5) {
-      //             $(".d5").one(animationEnd, function(){
-      //               $(this).removeClass('animated fadeIn');
-      //               $(".d5").css("box-shadow","0px 0px 0px #424242");
-      //             });
-      //           } else {
-      //             $(".d5").addClass("infinite flash");
-      //           }
-      //         });
-      //
-      //         $(".d6").css("top","66%");
-      //         $(".d6").css("left","38%");
-      //         $(".d6").fadeIn( function(){
-      //           if(Session.get("dot")!=6) {
-      //             $(".d6").one(animationEnd, function(){
-      //               $(this).removeClass('animated fadeIn');
-      //               $(".d6").css("box-shadow","0px 0px 0px #424242");
-      //             });
-      //           } else {
-      //             $(".d6").addClass("infinite flash");
-      //           }
-      //         });
-      //
-      //         $(".d7").css("top","28%");
-      //         $(".d7").css("left","70%");
-      //         $(".d7").fadeIn( function(){
-      //           if(Session.get("dot")!=7) {
-      //             $(".d7").one(animationEnd, function(){
-      //               $(this).removeClass('animated fadeIn');
-      //               $(".d7").css("box-shadow","0px 0px 0px #424242");
-      //             });
-      //           } else {
-      //             $(".d7").addClass("infinite flash");
-      //           }
-      //         });
-      //
-      //         $(".d8").css("top","58%");
-      //         $(".d8").css("right","71%");
-      //         $(".d8").fadeIn( function(){
-      //           if(Session.get("dot")!=8) {
-      //             $(".d8").one(animationEnd, function(){
-      //               $(this).removeClass('animated fadeIn');
-      //               $(".d8").css("box-shadow","0px 0px 0px #424242");
-      //             });
-      //           } else {
-      //             $(".d8").addClass("infinite flash");
-      //           }
-      //         });
-      //
-      //         $(".d9").css("top","40%");
-      //         $(".d9").css("right","12%");
-      //         $(".d9").fadeIn( function(){
-      //           if(Session.get("dot")!=9) {
-      //             $(".d9").one(animationEnd, function(){
-      //               $(this).removeClass('animated fadeIn');
-      //               $(".d9").css("box-shadow","0px 0px 0px #424242");
-      //             });
-      //           } else {
-      //             $(".d9").addClass("infinite flash");
-      //           }
-      //         });
-      //
-      //         $(".d10").css("top","68%");
-      //         $(".d10").css("right","80%");
-      //         $(".d10").fadeIn( function(){
-      //           if(Session.get("dot")!=10) {
-      //             $(".d10").one(animationEnd, function(){
-      //               $(this).removeClass('animated fadeIn');
-      //               $(".d10").css("box-shadow","0px 0px 0px #424242");
-      //             });
-      //           } else {
-      //             $(".d10").addClass("infinite flash");
-      //           }
-      //         });
-      //
-      //         $(".d11").css("top","38%");
-      //         $(".d11").css("right","38%");
-      //         $(".d11").fadeIn( function(){
-      //           if(Session.get("dot")!=11) {
-      //             $(".d11").one(animationEnd, function(){
-      //               $(this).removeClass('animated fadeIn');
-      //               $(".d11").css("box-shadow","0px 0px 0px #424242");
-      //             });
-      //           } else {
-      //             $(".d11").addClass("infinite flash");
-      //           }
-      //         });
-      //
-      //         $(".d12").css("top","80%");
-      //         $(".d12").css("right","77%");
-      //         $(".d12").fadeIn( function(){
-      //           if(Session.get("dot")!=12) {
-      //             $(".d12").one(animationEnd, function(){
-      //               $(this).removeClass('animated fadeIn');
-      //               $(".d12").css("box-shadow","0px 0px 0px #424242");
-      //             });
-      //           } else {
-      //             $(".d12").addClass("infinite flash");
-      //           }
-      //         });
-      //
-      //         $(".d13").css("top","58%");
-      //         $(".d13").css("right","36%");
-      //         $(".d13").fadeIn( function(){
-      //           if(Session.get("dot")!=13) {
-      //             $(".d13").on(animationEnd, function(){
-      //               $(this).removeClass('animated fadeIn');
-      //               $(".d13").css("box-shadow","0px 0px 0px #424242");
-      //             });
-      //           } else {
-      //             $(".d13").addClass("infinite flash");
-      //           }
-      //         });
-      //
-      //         $(".d14").css("top","22%");
-      //         $(".d14").css("right","8%");
-      //         $(".d14").fadeIn( function(){
-      //           if(Session.get("dot")!=14) {
-      //             $(".d14").one(animationEnd, function(){
-      //               $(this).removeClass('animated fadeIn');
-      //               $(".d14").css("box-shadow","0px 0px 0px #424242");
-      //             });
-      //           } else {
-      //             $(".d14").addClass("infinite flash");
-      //           }
-      //         });
-      //
-      //         $(".d15").css("top","41%");
-      //         $(".d15").css("right","27%");
-      //         $(".d15").fadeIn( function(){
-      //           if(Session.get("dot")!=15) {
-      //             $(".d15").one(animationEnd, function(){
-      //               $(this).removeClass('animated fadeIn');
-      //               $(".d15").css("box-shadow","0px 0px 0px #424242");
-      //             });
-      //           } else {
-      //             $(".d15").addClass("infinite flash");
-      //           }
-      //         });
-      //
-      //       }
-      //     });
-      //   });
+  Template.middle.helpers({
+    "value" : function(){
+      var a = Session.get("currentIntro");
+      if(a>5) a = 5;
+      return a;
     }
   });
 
@@ -334,6 +112,7 @@ if (Meteor.isClient) {
     },
     "click .intro-next": function(){
       if(Session.get("currentIntro") <= 5) {
+        $(".intro-next").fadeOut();
         Session.set("a"+Session.get("currentIntro"), $(".intro-slider").attr("value"));
         Session.set("currentIntro", Session.get("currentIntro")+1);
         $(".introduction").fadeOut(function(){
@@ -352,17 +131,255 @@ if (Meteor.isClient) {
           if(Session.get("viz") == "texture") {
             $(".img-middle").attr("src","viz/t"+Session.get("intro")[Session.get("currentIntro")-1]+".png");
           }
-          $(".intro-next").fadeOut();
           $(".introduction").fadeIn();
         });
       }
       if(Session.get("currentIntro") > 5) {
         Session.set("a"+Session.get("currentIntro"), $(".intro-slider").attr("value"));
         $(".img-middle").attr("src","viz/dum.png");
+        var o = Session.get("questions");
+        for(var j,x,i= o.length; i; j=Math.floor(Math.random()*i),x=o[--i],o[i]=o[j],o[j]=x);
+        Session.set("questions", o);
         $(".introduction").fadeOut(function(){
           $(".introduction").remove();
+          $(".image").css("display","flex");
+          /*** FADE IN CHART PART WITH DOTS AND EVERYTHING ***/
+          if(Session.get("evaluation") == "regression") {
+            if(Session.get("viz") == "blur") {
+              $(".image").css("background-image","url('regression/q3.png')");
+            }
+            if(Session.get("viz") == "opacity") {
+              $(".image").css("background-image","url('regression/q1.png')");
+            }
+            if(Session.get("viz") == "grid") {
+              $(".image").css("background-image","url('regression/q4.png')");
+            }
+            if(Session.get("viz") == "lines") {
+              $(".image").css("background-image","url('regression/q2.png')");
+            }
+            if(Session.get("viz") == "texture") {
+              $(".image").css("background-image","url('regression/q5.png')");
+            }
+          }
+          if(Session.get("evaluation") == "cluster") {
+            if(Session.get("viz") == "blur") {
+              $(".image").css("background-image","url('cluster/q7.png')");
+            }
+            if(Session.get("viz") == "opacity") {
+              $(".image").css("background-image","url('cluster/q6.png')");
+            }
+            if(Session.get("viz") == "grid") {
+              $(".image").css("background-image","url('cluster/q9.png')");
+            }
+            if(Session.get("viz") == "lines") {
+              $(".image").css("background-image","url('cluster/q8.png')");
+            }
+            if(Session.get("viz") == "texture") {
+              $(".image").css("background-image","url('cluster/q10.png')");
+            }
+          }
+          /*** FADE IN CHART PART WITH DOTS AND EVERYTHING ***/
+          $(".chart-dummy").fadeOut(function(){
+            $(".top h2").text("Please, answer the questions below the chart");
+            $(".button-begin").fadeOut();
+            $(".image").fadeIn(function(){
+              $(".bottom").fadeIn();
+              if(Session.get("evaluation") == "regression") {
+                var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+                $(".d1").css("top","87%");
+                $(".d1").css("left","13%");
+                $(".d1").fadeIn( function(){
+                  if(Session.get("dot")!=1) {
+                    $(".d1").one(animationEnd, function(){
+                      $(this).removeClass('animated fadeIn');
+                      $(".d1").css("box-shadow","0px 0px 0px #424242");
+                    });
+                  } else {
+                    $(".d1").addClass("infinite flash");
+                  }
+                });
+                $(".d2").css("top","53%");
+                $(".d2").css("left","80%");
+                $(".d2").fadeIn( function(){
+                  if(Session.get("dot")!=2) {
+                    $(".d2").one(animationEnd, function(){
+                      $(this).removeClass('animated fadeIn');
+                      $(".d2").css("box-shadow","0px 0px 0px #424242");
+                    });
+                  } else {
+                    $(".d2").addClass("infinite flash");
+                  }
+                });
+                $(".d3").css("top","67%");
+                $(".d3").css("left","30%");
+                $(".d3").fadeIn( function(){
+                  if(Session.get("dot")!=3) {
+                    $(".d3").one(animationEnd, function(){
+                      $(this).removeClass('animated fadeIn');
+                      $(".d3").css("box-shadow","0px 0px 0px #424242");
+                    });
+                  } else {
+                    $(".d3").addClass("infinite flash");
+                  }
+                });
+                $(".d4").css("top","40%");
+                $(".d4").css("left","40%");
+                $(".d4").fadeIn( function(){
+                  if(Session.get("dot")!=4) {
+                    $(".d4").one(animationEnd, function(){
+                      $(this).removeClass('animated fadeIn');
+                      $(".d4").css("box-shadow","0px 0px 0px #424242");
+                    });
+                  } else {
+                    $(".d4").addClass("infinite flash");
+                  }
+                });
+                $(".d5").css("top","50%");
+                $(".d5").css("left","50%");
+                $(".d5").fadeIn( function(){
+                  if(Session.get("dot")!=5) {
+                    $(".d5").one(animationEnd, function(){
+                      $(this).removeClass('animated fadeIn');
+                      $(".d5").css("box-shadow","0px 0px 0px #424242");
+                    });
+                  } else {
+                    $(".d5").addClass("infinite flash");
+                  }
+                });
+                $(".d6").css("top","66%");
+                $(".d6").css("left","38%");
+                $(".d6").fadeIn( function(){
+                  if(Session.get("dot")!=6) {
+                    $(".d6").one(animationEnd, function(){
+                      $(this).removeClass('animated fadeIn');
+                      $(".d6").css("box-shadow","0px 0px 0px #424242");
+                    });
+                  } else {
+                    $(".d6").addClass("infinite flash");
+                  }
+                });
+                $(".d7").css("top","28%");
+                $(".d7").css("left","70%");
+                $(".d7").fadeIn( function(){
+                  if(Session.get("dot")!=7) {
+                    $(".d7").one(animationEnd, function(){
+                      $(this).removeClass('animated fadeIn');
+                      $(".d7").css("box-shadow","0px 0px 0px #424242");
+                    });
+                  } else {
+                    $(".d7").addClass("infinite flash");
+                  }
+                });
+                $(".d8").css("top","58%");
+                $(".d8").css("right","71%");
+                $(".d8").fadeIn( function(){
+                  if(Session.get("dot")!=8) {
+                    $(".d8").one(animationEnd, function(){
+                      $(this).removeClass('animated fadeIn');
+                      $(".d8").css("box-shadow","0px 0px 0px #424242");
+                    });
+                  } else {
+                    $(".d8").addClass("infinite flash");
+                  }
+                });
+
+                $(".d9").css("top","40%");
+                $(".d9").css("right","12%");
+                $(".d9").fadeIn( function(){
+                  if(Session.get("dot")!=9) {
+                    $(".d9").one(animationEnd, function(){
+                      $(this).removeClass('animated fadeIn');
+                      $(".d9").css("box-shadow","0px 0px 0px #424242");
+                    });
+                  } else {
+                    $(".d9").addClass("infinite flash");
+                  }
+                });
+
+                $(".d10").css("top","68%");
+                $(".d10").css("right","80%");
+                $(".d10").fadeIn( function(){
+                  if(Session.get("dot")!=10) {
+                    $(".d10").one(animationEnd, function(){
+                      $(this).removeClass('animated fadeIn');
+                      $(".d10").css("box-shadow","0px 0px 0px #424242");
+                    });
+                  } else {
+                    $(".d10").addClass("infinite flash");
+                  }
+                });
+
+                $(".d11").css("top","38%");
+                $(".d11").css("right","38%");
+                $(".d11").fadeIn( function(){
+                  if(Session.get("dot")!=11) {
+                    $(".d11").one(animationEnd, function(){
+                      $(this).removeClass('animated fadeIn');
+                      $(".d11").css("box-shadow","0px 0px 0px #424242");
+                    });
+                  } else {
+                    $(".d11").addClass("infinite flash");
+                  }
+                });
+
+                $(".d12").css("top","80%");
+                $(".d12").css("right","77%");
+                $(".d12").fadeIn( function(){
+                  if(Session.get("dot")!=12) {
+                    $(".d12").one(animationEnd, function(){
+                      $(this).removeClass('animated fadeIn');
+                      $(".d12").css("box-shadow","0px 0px 0px #424242");
+                    });
+                  } else {
+                    $(".d12").addClass("infinite flash");
+                  }
+                });
+
+                $(".d13").css("top","58%");
+                $(".d13").css("right","36%");
+                $(".d13").fadeIn( function(){
+                  if(Session.get("dot")!=13) {
+                    $(".d13").on(animationEnd, function(){
+                      $(this).removeClass('animated fadeIn');
+                      $(".d13").css("box-shadow","0px 0px 0px #424242");
+                    });
+                  } else {
+                    $(".d13").addClass("infinite flash");
+                  }
+                });
+
+                $(".d14").css("top","22%");
+                $(".d14").css("right","8%");
+                $(".d14").fadeIn( function(){
+                  if(Session.get("dot")!=14) {
+                    $(".d14").one(animationEnd, function(){
+                      $(this).removeClass('animated fadeIn');
+                      $(".d14").css("box-shadow","0px 0px 0px #424242");
+                    });
+                  } else {
+                    $(".d14").addClass("infinite flash");
+                  }
+                });
+
+                $(".d15").css("top","41%");
+                $(".d15").css("right","27%");
+                $(".d15").fadeIn( function(){
+                  if(Session.get("dot")!=15) {
+                    $(".d15").one(animationEnd, function(){
+                      $(this).removeClass('animated fadeIn');
+                      $(".d15").css("box-shadow","0px 0px 0px #424242");
+                    });
+                  } else {
+                    $(".d15").addClass("infinite flash");
+                  }
+                });
+                /**End of regression**/
+              }
+            });
+            /******/
+          });
+          /***/
         });
-        /*** FADE IN CHART PART WITH DOTS AND EVERYTHING**/
       }
     },
     "click .intro-slider": function(){
