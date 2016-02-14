@@ -4,6 +4,7 @@ if (Meteor.isClient) {
   Questions = new Meteor.Collection('questions');
   var now = new Date();
   Session.setDefault("question", "");
+  Session.set("currentIntro", 1);
   Session.setDefault("timest",now);
   Session.setDefault("timestq",now);
 
@@ -332,7 +333,37 @@ if (Meteor.isClient) {
       console.log("asd");
     },
     "click .intro-next": function(){
-      console.log($(".intro-slider").attr("value"));
+      if(Session.get("currentIntro") <= 5) {
+        Session.set("a"+Session.get("currentIntro"), $(".intro-slider").attr("value"));
+        Session.set("currentIntro", Session.get("currentIntro")+1);
+        $(".introduction").fadeOut(function(){
+          if(Session.get("viz") == "blur") {
+            $(".img-middle").attr("src","viz/b"+Session.get("intro")[Session.get("currentIntro")-1]+".png");
+          }
+          if(Session.get("viz") == "opacity") {
+            $(".img-middle").attr("src","viz/o"+Session.get("intro")[Session.get("currentIntro")-1]+".png");
+          }
+          if(Session.get("viz") == "grid") {
+            $(".img-middle").attr("src","viz/s"+Session.get("intro")[Session.get("currentIntro")-1]+".png");
+          }
+          if(Session.get("viz") == "lines") {
+            $(".img-middle").attr("src","viz/l"+Session.get("intro")[Session.get("currentIntro")-1]+".png");
+          }
+          if(Session.get("viz") == "texture") {
+            $(".img-middle").attr("src","viz/t"+Session.get("intro")[Session.get("currentIntro")-1]+".png");
+          }
+          $(".intro-next").fadeOut();
+          $(".introduction").fadeIn();
+        });
+      }
+      if(Session.get("currentIntro") > 5) {
+        Session.set("a"+Session.get("currentIntro"), $(".intro-slider").attr("value"));
+        $(".img-middle").attr("src","viz/dum.png");
+        $(".introduction").fadeOut(function(){
+          $(".introduction").remove();
+        });
+        /*** FADE IN CHART PART WITH DOTS AND EVERYTHING**/
+      }
     },
     "click .intro-slider": function(){
       $(".intro-next").fadeIn();
@@ -592,10 +623,6 @@ if (Meteor.isClient) {
           //   $(this).removeClass('animated flash');
           // });
         });
-
-
-
-
       } else {
         $("paper-radio-button").addClass('animated bounce');
         var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';

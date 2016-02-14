@@ -108,8 +108,10 @@ h3 {
 }
 
 .intro-next {
+  position: absolute;
   margin-top: 10px;
   border: 1px solid #bdc3c7;
+  left: 43%;
 }
 
 .button-begin {
@@ -186,6 +188,7 @@ paper-slider {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .intro-pictures {
