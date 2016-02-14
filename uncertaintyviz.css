@@ -2,6 +2,7 @@
 * {
   margin: 0px;
   padding: 0px;
+  /*font-family: Arial, sans-serif;*/
   font-family: Roboto, Arial, sans-serif;
   font-size: 13px;
   /*-webkit-touch-callout: none;
@@ -55,7 +56,7 @@ a {
 
 h3 {
   font-weight: 400;
-  font-size: 18px;
+  font-size: 14px;
   color: #7f8c8d;
 }
 
@@ -101,6 +102,11 @@ h3 {
   position: relative;
 }
 
+.intro-next {
+  margin-top: 10px;
+  border: 1px solid #bdc3c7;
+}
+
 .button-begin {
   position: absolute;
   right: 0;
@@ -135,7 +141,6 @@ paper-button:hover {
   min-width: 400px;
   max-height: 400px;
   min-height: 400px;
-  background-image: url("demo.png");
 }
 
 .dot {
@@ -155,9 +160,10 @@ paper-button:hover {
   cursor: pointer;
 }
 
-paper-radio-button {
+paper-slider {
   padding-top: 20px;
   color: #424242;
+  width: 500px;
 }
 
 .chart-dummy {
@@ -168,4 +174,39 @@ paper-radio-button {
   width: 600px;
   height: 600px;
   border: 1px solid #ECF0F1;
+}
+
+.introduction {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-pictures {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.pic-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pic-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.pic-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
