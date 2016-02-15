@@ -92,6 +92,7 @@ Router.route('/rt', function () {
   var params = this.params;
   this.render("etc");
   $(".container").css("display","flex");
+  $(".button-begin").fadeIn();
   Session.set("evaluation","regression");
   Session.set("viz","texture");
 });
