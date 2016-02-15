@@ -7,10 +7,9 @@ if (Meteor.isClient) {
   Session.set("currentIntro",1);
   Session.setDefault("timest",now);
   Session.setDefault("timestq",now);
-
   /*questions*/
-  Session.setDefault("questions", [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
-  Session.setDefault("intro", [1,2,3,4,5]);
+  Session.setDefault("questions",[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
+  Session.setDefault("intro",[1,2,3,4,5]);
   /* Answers */
   Session.setDefault("q1", "");
   Session.setDefault("q2", "");
@@ -287,19 +286,28 @@ if (Meteor.isClient) {
                 $(".d"+Session.get("questions")[0]).addClass("animated infinite flash");
               }
             });
-            /******/
+            /***/
           });
           /***/
         });
       }
+      /***/
     },
     "click .dot.infinite": function(){
       $(".verify").fadeOut(function(){
-        $(".q"+Session.get("questions")[Session.get("currentQuestion")]).fadeIn();
+        $(".q"+Session.get("questions")[Session.get("currentQuestion")-1]).fadeIn();
       });
     },
     "click .intro-slider": function(){
       $(".intro-next").fadeIn();
+    }
+  });
+
+  Template.bottom.helpers({
+    "question" : function(){
+      var a = Session.get("currentQuestion");
+      if(a>15) a = 15;
+      return a;
     }
   });
 
@@ -321,7 +329,7 @@ if (Meteor.isClient) {
     'click .button-next': function () {
       $(".dot").removeClass("animated flash");
       Session.set("currentQuestion", Session.get("currentQuestion") + 1);
-      $(".d"+Session.get("questions")[Session.get("currentQuestion")]).addClass("animated infinite flash");
+      $(".d"+Session.get("questions")[Session.get("currentQuestion")-1]).addClass("animated infinite flash");
       $(".question").fadeOut(function(){
         $(".button-next").fadeOut(function(){
           $(".verify").fadeIn();
@@ -369,23 +377,20 @@ if (Meteor.isClient) {
       //     "evaluation": Session.get("evaluation")
       //   });
       //
-      //   $(".image").fadeOut();
-      //   $(".question").fadeOut(function(){
-      //     $(".button-finish").fadeOut(function(){
-      //       $(".top h1").fadeOut();
-      //       $(".top h2").fadeOut();
-      //       $(".chart-dummy").fadeIn();
-      //       if(Session.get("evaluation") == "cluster") {
-      //         $(".thankscluster").fadeIn();
-      //       }
-      //       if(Session.get("evaluation") == "regression") {
-      //         $(".thanksregression").fadeIn();
-      //       }
-      //       if(Session.get("evaluation") == "both") {
-      //         $(".thanksboth").fadeIn();
-      //       }
-      //     });
-      //   });
+      $(".image").fadeOut();
+      $(".question").fadeOut(function(){
+        $(".button-finish").fadeOut(function(){
+          $(".top h1").fadeOut();
+          $(".top h2").fadeOut();
+          $(".chart-dummy").fadeIn();
+          if(Session.get("evaluation") == "cluster") {
+            $(".thankscluster").fadeIn();
+          }
+          if(Session.get("evaluation") == "regression") {
+            $(".thanksregression").fadeIn();
+          }
+        });
+      });
       // } else {
       //   $("paper-radio-button").addClass('animated bounce');
       //   var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';

@@ -17,6 +17,7 @@
   <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto:900,400,300,100' type='text/css'>
   <link rel="import" href="bower_components/paper-button/paper-button.html">
   <link rel="import" href="bower_components/paper-slider/paper-slider.html">
+  <link rel="import" href="bower_components/paper-ripple/paper-ripple.html">
   <link rel="import" href="bower_components/iron-icons/editor-icons.html">
   <link rel="import" href="bower_components/iron-icons/iron-icons.html">
 </head>
@@ -50,7 +51,7 @@
           <h3>Less Accurate</h3>
         </div>
         <div class="pic-center">
-          <img src="viz/t3.png" alt="Guess" height="100" width="100" class="animated infinite fadeIn img-middle">
+          <img src="viz/dum.png" alt="Guess" height="100" width="100" class="animated infinite fadeIn img-middle">
           <h3 style="color: #424242;">What is this?</h3>
         </div>
         <div class="pic-right">
@@ -81,6 +82,7 @@
       <div class="dot dx"></div>
       <div class="dot dy"></div>
       <div class="dot dz"></div>
+      <paper-ripple></paper-ripple>
     </div>
   </div>
 </template>
@@ -88,80 +90,96 @@
 <template name="bottom">
   <div class="bottom">
     <div class="verify" style="display: none;">
+      <div class="q-count">{{question}} of 15</div>
       <h1>Can you see the <u>flashing</u> dot?</h1>
       <h2>Please, click on it to continue...</h2>
     </div>
     <div class="question q1 animated fadeInDown" style="display: none;">
+      <div class="q-count">{{question}} of 15</div>
       <h1>Given the <u>flashing</u> dot position...</h1>
       <h2>What is your level of confidence?</h2>
       <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
     </div>
     <div class="question q2 animated fadeInDown" style="display: none;">
+      <div class="q-count">{{question}} of 15</div>
       <h1>Given the <u>flashing</u> dot position...</h1>
       <h2>What is your level of confidence?</h2>
       <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
     </div>
     <div class="question q3 animated fadeInDown" style="display: none;">
+      <div class="q-count">{{question}} of 15</div>
       <h1>Given the <u>flashing</u> dot position...</h1>
       <h2>What is your level of confidence?</h2>
       <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
     </div>
     <div class="question q4 animated fadeInDown" style="display: none;">
+      <div class="q-count">{{question}} of 15</div>
       <h1>Given the <u>flashing</u> dot position...</h1>
       <h2>What is your level of confidence?</h2>
       <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
     </div>
     <div class="question q5 animated fadeInDown" style="display: none;">
+      <div class="q-count">{{question}} of 15</div>
       <h1>Given the <u>flashing</u> dot position...</h1>
       <h2>What is your level of confidence?</h2>
       <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
     </div>
     <div class="question q6 animated fadeInDown" style="display: none;">
+      <div class="q-count">{{question}} of 15</div>
       <h1>Given the <u>flashing</u> dot position...</h1>
       <h2>What is your level of confidence?</h2>
       <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
     </div>
     <div class="question q7 animated fadeInDown" style="display: none;">
+      <div class="q-count">{{question}} of 15</div>
       <h1>Given the <u>flashing</u> dot position...</h1>
       <h2>What is your level of confidence?</h2>
       <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
     </div>
     <div class="question q8 animated fadeInDown" style="display: none;">
+      <div class="q-count">{{question}} of 15</div>
       <h1>Given the <u>flashing</u> dot position...</h1>
       <h2>What is your level of confidence?</h2>
       <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
     </div>
     <div class="question q9 animated fadeInDown" style="display: none;">
+      <div class="q-count">{{question}} of 15</div>
       <h1>Given the <u>flashing</u> dot position...</h1>
       <h2>What is your level of confidence?</h2>
       <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
     </div>
     <div class="question q10 animated fadeInDown" style="display: none;">
+      <div class="q-count">{{question}} of 15</div>
       <h1>Given the <u>flashing</u> dot position...</h1>
       <h2>What is your level of confidence?</h2>
       <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
     </div>
     <div class="question q11 animated fadeInDown" style="display: none;">
+      <div class="q-count">{{question}} of 15</div>
       <h1>Given the <u>flashing</u> dot position...</h1>
       <h2>What is your level of confidence?</h2>
       <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
     </div>
     <div class="question q12 animated fadeInDown" style="display: none;">
+      <div class="q-count">{{question}} of 15</div>
       <h1>Given the <u>flashing</u> dot position...</h1>
       <h2>What is your level of confidence?</h2>
       <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
     </div>
     <div class="question q13 animated fadeInDown" style="display: none;">
+      <div class="q-count">{{question}} of 15</div>
       <h1>Given the <u>flashing</u> dot position...</h1>
       <h2>What is your level of confidence?</h2>
       <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
     </div>
     <div class="question q14 animated fadeInDown" style="display: none;">
+      <div class="q-count">{{question}} of 15</div>
       <h1>Given the <u>flashing</u> dot position...</h1>
       <h2>What is your level of confidence?</h2>
       <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
     </div>
     <div class="question q15 animated fadeInDown" style="display: none;">
+      <div class="q-count">{{question}} of 15</div>
       <h1>Given the <u>flashing</u> dot position...</h1>
       <h2>What is your level of confidence?</h2>
       <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>

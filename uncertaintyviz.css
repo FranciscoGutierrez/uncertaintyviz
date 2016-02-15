@@ -219,3 +219,12 @@ paper-slider {
   justify-content: center;
   align-items: center;
 }
+
+paper-ripple {
+  color: #4285f4;
+}
+
+.q-count {
+  color: #7f8c8d;
+  font-size: 12px;
+}
