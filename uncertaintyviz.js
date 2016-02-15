@@ -50,7 +50,6 @@ if (Meteor.isClient) {
         $(".chart-dummy").fadeOut(function(){
           $(".introduction").fadeIn();
         });
-
         $(".img-left").attr("src","viz/b1.png");
         $(".img-middle").attr("src","viz/b"+Session.get("intro")[0]+".png");
         $(".img-right").attr("src","viz/b5.png");
@@ -60,7 +59,6 @@ if (Meteor.isClient) {
         $(".chart-dummy").fadeOut(function(){
           $(".introduction").fadeIn();
         });
-
         $(".img-left").attr("src","viz/o1.png");
         $(".img-middle").attr("src","viz/o"+Session.get("intro")[0]+".png");
         $(".img-right").attr("src","viz/o5.png");
@@ -80,7 +78,6 @@ if (Meteor.isClient) {
         $(".chart-dummy").fadeOut(function(){
           $(".introduction").fadeIn();
         });
-
         $(".img-left").attr("src","viz/l1.png");
         $(".img-middle").attr("src","viz/l"+Session.get("intro")[0]+".png");
         $(".img-right").attr("src","viz/l5.png");
@@ -90,7 +87,6 @@ if (Meteor.isClient) {
         $(".chart-dummy").fadeOut(function(){
           $(".introduction").fadeIn();
         });
-
         $(".img-left").attr("src","viz/t1.png");
         $(".img-middle").attr("src","viz/t"+Session.get("intro")[0]+".png");
         $(".img-right").attr("src","viz/t5.png");
@@ -229,6 +225,65 @@ if (Meteor.isClient) {
                 $(".d15").css("top","41%");
                 $(".d15").css("right","27%");
                 $(".d15").fadeIn();
+                /***** outguys ****/
+                $(".dx").css("top","80%");
+                $(".dx").css("right","27%");
+                $(".dx").fadeIn();
+                $(".dy").css("top","75%");
+                $(".dy").css("right","14%");
+                $(".dy").fadeIn();
+                $(".dz").css("top","12%");
+                $(".dz").css("left","27%");
+                $(".dz").fadeIn();
+                $(".d"+Session.get("questions")[0]).addClass("animated infinite flash");
+              }
+              /***** CLUSTER ****/
+              if(Session.get("evaluation") == "cluster") {
+                $(".d1").css("top","89%");
+                $(".d1").css("left","43%");
+                $(".d1").fadeIn();
+                $(".d2").css("top","22%");
+                $(".d2").css("left","78%");
+                $(".d2").fadeIn();
+                $(".d3").css("top","70%");
+                $(".d3").css("left","40%");
+                $(".d3").fadeIn();
+                $(".d4").css("top","40%");
+                $(".d4").css("left","40%");
+                $(".d4").fadeIn();
+                $(".d5").css("top","74%");
+                $(".d5").css("left","44%");
+                $(".d5").fadeIn();
+                $(".d6").css("top","38%");
+                $(".d6").css("left","28%");
+                $(".d6").fadeIn();
+                $(".d7").css("top","26%");
+                $(".d7").css("left","72%");
+                $(".d7").fadeIn();
+                $(".d8").css("top","56%");
+                $(".d8").css("right","71%");
+                $(".d8").fadeIn();
+                $(".d9").css("top","31%");
+                $(".d9").css("right","18%");
+                $(".d9").fadeIn();
+                $(".d10").css("top","42%");
+                $(".d10").css("left","25%");
+                $(".d10").fadeIn();
+                $(".d11").css("top","22%");
+                $(".d11").css("right","35%");
+                $(".d11").fadeIn();
+                $(".d12").css("top","80%");
+                $(".d12").css("right","42%");
+                $(".d12").fadeIn();
+                $(".d13").css("top","67%");
+                $(".d13").css("left","51%");
+                $(".d13").fadeIn();
+                $(".d14").css("top","27%");
+                $(".d14").css("left","22%");
+                $(".d14").fadeIn();
+                $(".d15").css("top","39%");
+                $(".d15").css("right","27%");
+                $(".d15").fadeIn();
                 $(".d"+Session.get("questions")[0]).addClass("animated infinite flash");
               }
             });
@@ -240,7 +295,7 @@ if (Meteor.isClient) {
     },
     "click .dot.infinite": function(){
       $(".verify").fadeOut(function(){
-          $(".q"+Session.get("questions")[Session.get("currentQuestion")]).fadeIn();
+        $(".q"+Session.get("questions")[Session.get("currentQuestion")]).fadeIn();
       });
     },
     "click .intro-slider": function(){
@@ -257,14 +312,18 @@ if (Meteor.isClient) {
       });
     },
     "click .q-slider": function () {
-      $(".button-next").fadeIn();
+      if(Session.get("currentQuestion") < 15 ) {
+        $(".button-next").fadeIn();
+      } else {
+        $(".button-finish").fadeIn();
+      }
     },
     'click .button-next': function () {
       $(".dot").removeClass("animated flash");
       Session.set("currentQuestion", Session.get("currentQuestion") + 1);
       $(".d"+Session.get("questions")[Session.get("currentQuestion")]).addClass("animated infinite flash");
-      $(".button-next").fadeOut(function(){
-        $(".question").fadeOut(function(){
+      $(".question").fadeOut(function(){
+        $(".button-next").fadeOut(function(){
           $(".verify").fadeIn();
         });
       });
