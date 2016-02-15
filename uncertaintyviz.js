@@ -366,7 +366,8 @@ if (Meteor.isClient) {
       //     "timestampSt": Session.get("timestq").getTime(),
       //     "timestampEd": now.getTime(),
       //     "timespent": now.getTime() - Session.get("timestq").getTime(),
-      //     "evaluation": Session.get("evaluation")
+      //     "evaluation": Session.get("evaluation"),
+      //     "viz": Session.get("viz")
       //   });
       //
       //   Users.insert({
@@ -374,8 +375,29 @@ if (Meteor.isClient) {
       //     "timestampSt": Session.get("timest").getTime(),
       //     "timestampEd": now.getTime(),
       //     "timeSpent" : now.getTime() - Session.get("timest").getTime(),
-      //     "evaluation": Session.get("evaluation")
-      //   });
+      //     "evaluation": Session.get("evaluation"),
+      //     "viz": Session.get("viz"),
+      //         "q1": Session.get("q1"),
+      //         "q2": Session.get("q2"),
+      //         "q3": Session.get("q3"),
+      //         "q4": Session.get("q4"),
+      //         "q5": Session.get("q5"),
+      //         "q6": Session.get("q6"),
+      //         "q7": Session.get("q7"),
+      //         "q8": Session.get("q8"),
+      //         "q9": Session.get("q9"),
+      //         "q10": Session.get("q10"),
+      //         "q11": Session.get("q11"),
+      //         "q12": Session.get("q12"),
+      //         "q13": Session.get("q13"),
+      //         "q14": Session.get("q14"),
+      //         "q15": Session.get("q15"),
+      //         "a1": Session.get("a1"),
+      //         "a1": Session.get("a2"),
+      //         "a1": Session.get("a3"),
+      //         "a1": Session.get("a4"),
+      //         "a1":Session.get("a5"),
+      // });
       //
       $(".image").fadeOut();
       $(".question").fadeOut(function(){

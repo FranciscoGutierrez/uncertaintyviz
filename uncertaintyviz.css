@@ -228,3 +228,7 @@ paper-ripple {
   color: #7f8c8d;
   font-size: 12px;
 }
+
+a {
+  cursor: pointer;
+}
