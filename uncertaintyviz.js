@@ -179,6 +179,7 @@ if (Meteor.isClient) {
                 $(".verify").fadeIn();
               });
               if(Session.get("evaluation") == "regression") {
+                /**** ULevel 1 ****/
                 $(".d1").css("top","87%");
                 $(".d1").css("left","13%");
                 $(".d1").fadeIn();
@@ -188,6 +189,7 @@ if (Meteor.isClient) {
                 $(".d3").css("top","67%");
                 $(".d3").css("left","30%");
                 $(".d3").fadeIn();
+                /**** ULevel 2 ****/
                 $(".d4").css("top","40%");
                 $(".d4").css("left","40%");
                 $(".d4").fadeIn();
@@ -197,6 +199,7 @@ if (Meteor.isClient) {
                 $(".d6").css("top","66%");
                 $(".d6").css("left","38%");
                 $(".d6").fadeIn();
+                /**** ULevel 3 ****/
                 $(".d7").css("top","28%");
                 $(".d7").css("left","70%");
                 $(".d7").fadeIn();
@@ -206,6 +209,7 @@ if (Meteor.isClient) {
                 $(".d9").css("top","40%");
                 $(".d9").css("right","12%");
                 $(".d9").fadeIn();
+                /**** ULevel 4 ****/
                 $(".d10").css("top","68%");
                 $(".d10").css("right","80%");
                 $(".d10").fadeIn();
@@ -215,6 +219,7 @@ if (Meteor.isClient) {
                 $(".d12").css("top","80%");
                 $(".d12").css("right","77%");
                 $(".d12").fadeIn();
+                /**** ULevel 5 ****/
                 $(".d13").css("top","58%");
                 $(".d13").css("right","36%");
                 $(".d13").fadeIn();
@@ -238,35 +243,39 @@ if (Meteor.isClient) {
               }
               /***** CLUSTER ****/
               if(Session.get("evaluation") == "cluster") {
-                $(".d1").css("top","89%");
-                $(".d1").css("left","43%");
+                /**** ULevel 1 ****/
+                $(".d1").css("top","26%");
+                $(".d1").css("left","72%");
                 $(".d1").fadeIn();
-                $(".d2").css("top","22%");
-                $(".d2").css("left","78%");
+                $(".d2").css("top","74%");
+                $(".d2").css("left","44%");
                 $(".d2").fadeIn();
-                $(".d3").css("top","70%");
-                $(".d3").css("left","40%");
+                $(".d3").css("top","38%");
+                $(".d3").css("left","28%");
                 $(".d3").fadeIn();
-                $(".d4").css("top","40%");
-                $(".d4").css("left","40%");
+                /**** ULevel 2 ****/
+                $(".d4").css("top","42%");
+                $(".d4").css("left","25%");
                 $(".d4").fadeIn();
-                $(".d5").css("top","74%");
-                $(".d5").css("left","44%");
+                $(".d5").css("top","22%");
+                $(".d5").css("left","78%");
                 $(".d5").fadeIn();
-                $(".d6").css("top","38%");
-                $(".d6").css("left","28%");
+                $(".d6").css("top","70%");
+                $(".d6").css("left","40%");
                 $(".d6").fadeIn();
-                $(".d7").css("top","26%");
-                $(".d7").css("left","72%");
+                /**** ULevel 3 ****/
+                $(".d7").css("top","67%");
+                $(".d7").css("left","51%");
                 $(".d7").fadeIn();
-                $(".d8").css("top","56%");
-                $(".d8").css("right","71%");
+                $(".d8").css("top","40%");
+                $(".d8").css("left","40%");
                 $(".d8").fadeIn();
                 $(".d9").css("top","31%");
                 $(".d9").css("right","18%");
                 $(".d9").fadeIn();
-                $(".d10").css("top","42%");
-                $(".d10").css("left","25%");
+                /**** ULevel 4 ****/
+                $(".d10").css("top","27%");
+                $(".d10").css("left","22%");
                 $(".d10").fadeIn();
                 $(".d11").css("top","22%");
                 $(".d11").css("right","35%");
@@ -274,15 +283,26 @@ if (Meteor.isClient) {
                 $(".d12").css("top","80%");
                 $(".d12").css("right","42%");
                 $(".d12").fadeIn();
-                $(".d13").css("top","67%");
-                $(".d13").css("left","51%");
+                /**** ULevel 5 ****/
+                $(".d13").css("top","56%");
+                $(".d13").css("right","71%");
                 $(".d13").fadeIn();
-                $(".d14").css("top","27%");
-                $(".d14").css("left","22%");
+                $(".d14").css("top","89%");
+                $(".d14").css("left","43%");
                 $(".d14").fadeIn();
                 $(".d15").css("top","39%");
                 $(".d15").css("right","27%");
                 $(".d15").fadeIn();
+                /***** outguys ****/
+                $(".dx").css("top","80%");
+                $(".dx").css("right","64%");
+                $(".dx").fadeIn();
+                $(".dy").css("top","14%");
+                $(".dy").css("right","14%");
+                $(".dy").fadeIn();
+                $(".dz").css("top","22%");
+                $(".dz").css("left","29%");
+                $(".dz").fadeIn();
                 $(".d"+Session.get("questions")[0]).addClass("animated infinite flash");
               }
             });
@@ -377,26 +397,26 @@ if (Meteor.isClient) {
       //     "timeSpent" : now.getTime() - Session.get("timest").getTime(),
       //     "evaluation": Session.get("evaluation"),
       //     "viz": Session.get("viz"),
-      //         "q1": Session.get("q1"),
-      //         "q2": Session.get("q2"),
-      //         "q3": Session.get("q3"),
-      //         "q4": Session.get("q4"),
-      //         "q5": Session.get("q5"),
-      //         "q6": Session.get("q6"),
-      //         "q7": Session.get("q7"),
-      //         "q8": Session.get("q8"),
-      //         "q9": Session.get("q9"),
-      //         "q10": Session.get("q10"),
-      //         "q11": Session.get("q11"),
-      //         "q12": Session.get("q12"),
-      //         "q13": Session.get("q13"),
-      //         "q14": Session.get("q14"),
-      //         "q15": Session.get("q15"),
+      //         "q1": Session.get("q1"), level of uncertainty 1
+      //         "q2": Session.get("q2"), level of uncertainty 1
+      //         "q3": Session.get("q3"), level of uncertainty 1
+      //         "q4": Session.get("q4"), level of uncertainty 2
+      //         "q5": Session.get("q5"), level of uncertainty 2
+      //         "q6": Session.get("q6"), level of uncertainty 2
+      //         "q7": Session.get("q7"), level of uncertainty 3
+      //         "q8": Session.get("q8"), level of uncertainty 3
+      //         "q9": Session.get("q9"), level of uncertainty 3
+      //         "q10": Session.get("q10"), level of uncertainty 4
+      //         "q11": Session.get("q11"), level of uncertainty 4
+      //         "q12": Session.get("q12"), level of uncertainty 4
+      //         "q13": Session.get("q13"), level of uncertainty 5
+      //         "q14": Session.get("q14"), level of uncertainty 5
+      //         "q15": Session.get("q15"), level of uncertainty 5
       //         "a1": Session.get("a1"),
-      //         "a1": Session.get("a2"),
-      //         "a1": Session.get("a3"),
-      //         "a1": Session.get("a4"),
-      //         "a1":Session.get("a5"),
+      //         "a2": Session.get("a2"),
+      //         "a3": Session.get("a3"),
+      //         "a4": Session.get("a4"),
+      //         "a5":Session.get("a5"),
       // });
       //
       $(".image").fadeOut();

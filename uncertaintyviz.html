@@ -34,8 +34,8 @@
 <template name="etc"></template>
 <template name="top">
   <div class="top">
-    <h1>Welcome to this evaluation!</h1>
-    <h2>Ready? Please, click the start button.</h2>
+    <h1>Welcome to this assignment!</h1>
+    <h2>Ready? Please, click the <b>start</b> button</h2>
     <paper-button class="button-begin" style="display: none;">Start</paper-button>
   </div>
 </template>
@@ -48,15 +48,15 @@
       <div class="intro-pictures">
         <div class="pic-left">
           <img src="viz/t1.png" alt="Less" height="100" width="100" class="img-left">
-          <h3>Less Accurate</h3>
+          <h3>Low Accuracy</h3>
         </div>
         <div class="pic-center">
-          <img src="viz/dum.png" alt="Guess" height="100" width="100" class="animated infinite fadeIn img-middle">
+          <img src="viz/dum.png" alt="Guess" height="100" width="100" class="animated bounce img-middle">
           <h3 style="color: #424242;">What is this?</h3>
         </div>
         <div class="pic-right">
           <img src="viz/t5.png" alt="More" height="100" width="100" class="img-right">
-          <h3>More Accurate</h3>
+          <h3>High Accuracy</h3>
         </div>
       </div>
       <h2><b>Drag</b> the slider to provide an estimate</h2>
@@ -184,17 +184,9 @@
       <h2>What is your level of confidence?</h2>
       <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
     </div>
-    <div class="thankscluster animated fadeInDown" style="display: none;">
+    <div class="thanks animated fadeInDown" style="display: none;">
       <h1>Thank you, one last thing!</h1>
-      <h2>Please, <a href="http://goo.gl/forms/icQFsYM5Zj">click here</a> to answer a short questionnaire.</h2>
-    </div>
-    <div class="thanksregression animated fadeInDown" style="display: none;">
-      <h1>Thank you, one last thing!</h1>
-      <h2>Please, <a href="http://goo.gl/forms/icQFsYM5Zj">click here</a> to answer a short questionnaire.</h2>
-    </div>
-    <div class="thanksboth animated fadeInDown" style="display: none;">
-      <h1>Thank you, one last thing!</h1>
-      <h2>Please, <a href="http://goo.gl/forms/icQFsYM5Zj">click here</a> to answer a short questionnaire.</h2>
+      <h2>Please, <a href="">click here</a> to answer a <b>short questionnaire</b> and get your <b>survey code.</b></h2>
     </div>
     <paper-button class="button-next">Next</paper-button>
     <paper-button class="button-finish">Finish</paper-button>
