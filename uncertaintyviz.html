@@ -6,8 +6,8 @@
 
   <style is="custom-style">
   :root {
-    --iron-icon-width: 200px;
-    --iron-icon-height: 200px;
+    --iron-icon-width: 60px;
+    --iron-icon-height: 60px;
     --iron-icon-fill-color: #abbdc4;
     --paper-slider-knob-color: #004693;
     --paper-slider-active-color: #004693;
@@ -20,6 +20,7 @@
   <link rel="import" href="bower_components/paper-ripple/paper-ripple.html">
   <link rel="import" href="bower_components/iron-icons/editor-icons.html">
   <link rel="import" href="bower_components/iron-icons/iron-icons.html">
+  <link rel="import" href="bower_components/iron-icons/social-icons.html">
 </head>
 <body>
   <div class="container">
@@ -35,160 +36,190 @@
 <template name="top">
   <div class="top">
     <h1>Welcome to this assignment!</h1>
-    <h2>Ready? Please, click the <b>start</b> button</h2>
-    <paper-button class="button-begin" style="display: none;">Start</paper-button>
+    <h2>Please, follow the <b>tutorial</b>.</h2>
   </div>
 </template>
 <template name="middle">
   <div class="middle">
-    <iron-icon class="chart-dummy" icon="editor:insert-chart"></iron-icon>
-    <div class="introduction" style="display: none;">
-      <h1 style="font-size: 32px;">Guess the value</h1>
-      <h2>{{value}} of 5</h2>
-      <div class="intro-pictures">
-        <div class="pic-left">
-          <img src="viz/t1.png" alt="Less" height="100" width="100" class="img-left">
-          <h3>Low Accuracy</h3>
+    <div class="tutorial">
+      <h1 style="font-size: 52px; margin-top: 20px;">Tutorial</h1>
+      <div class="tutorial-area tut-1">
+        <p>In this assignment we will ask you to estimate the <b>accuracy</b> of a data point in a visualization.
+          The <b>accuracy</b> is expressed by <b class="aex">the size of a rectangle</b> surrounding the data point.</p>
+          <div class="tut-sample">
+            <div class="tut-left">
+              <img src="viz/t1.png" alt="Less" height="100" width="100" class="tut-img-left">
+              <p class="desc-large" style="text-align: center; font-size: 13px;">The <b>larger</b> the rectangle, the <b>lower</b> the <b>accuracy</b>.</p>
+            </div>
+            <div class="tut-right">
+              <img src="viz/t5.png" alt="Less" height="100" width="100" class="tut-img-right">
+              <p class="desc-small" style="text-align: center; font-size: 13px;">The <b>smaller</b> the rectangle, the <b>higher</b> the <b>accuracy</b>.</p>
+            </div>
+          </div>
+          <p style="text-align: center; opacity: 0.6;">The accuracy lies between 1 <b>(low)</b> and 5 <b>(high)</b>.</p>
+          <p style="text-align: center;">We will show you <b class="ashow">different sizes of rectangles</b> and ask you to <b>estimate the accuracy</b> of the data point.</p>
+          <paper-button class="button-tut-next">Next</paper-button>
         </div>
-        <div class="pic-center">
-          <img src="viz/dum.png" alt="Guess" height="100" width="100" class="animated bounce img-middle">
-          <h3 style="color: #424242;">What is this?</h3>
+        <div class="tutorial-area tut-2" style="display: none;">
+          <p style="text-align: center;">Then, we will do the same, but with the data points <b>mixed with others</b> in a visualization.
+            We will ask you 15 times to <b>provide an estimate.</b></p>
+            <img src="viz/dum.png" alt="Less" height="100" width="100" class="tut-img-dum">
+            <p style="text-align: center;">After, we will ask  you a few questions.</p>
+            <p style="text-align: center;"><b>Important:</b> You have to complete the whole assigment <b>truthfully</b> in order to get your <b>Amazon Survey Code</b>.</p>
+            <p style="text-align: center;">Have Fun!</p>
+            <paper-button class="button-begin" style="display: none;">Ok, Let's go!</paper-button>
+          </div>
         </div>
-        <div class="pic-right">
-          <img src="viz/t5.png" alt="More" height="100" width="100" class="img-right">
-          <h3>High Accuracy</h3>
+        <div class="thanks animated fadeInDown" style="display: none;">
+          <h1 style="font-size: 32px;">Thank you!</h1>
+          <h2 style="width: 500px;">Please, <a href="">click here</a> to answer a <b>short questionnaire</b> and get your <b>Amazon Turk Survey Code.</b></h2>
+          <br>
+          <h2 style="width: 500px;">Your assignment ID is: <b>asd-asd-asd-asd</b></h2>
+          <h2 style="width: 500px;">Important: Be sure to provide this exact number in the following questionnaire.</h2>
+        </div>
+        <div class="introduction" style="display: none;">
+          <h1 style="font-size: 32px;">Guess the value</h1>
+          <h2>{{value}} of 5</h2>
+          <div class="intro-pictures">
+            <div class="pic-left">
+              <img src="viz/t1.png" alt="Less" height="100" width="100" class="img-left">
+              <h3>Low Accuracy</h3>
+            </div>
+            <div class="pic-center">
+              <img src="viz/dum.png" alt="Guess" height="100" width="100" class="animated bounce img-middle">
+              <h3 style="color: #424242;">What is this?</h3>
+            </div>
+            <div class="pic-right">
+              <img src="viz/t5.png" alt="More" height="100" width="100" class="img-right">
+              <h3>High Accuracy</h3>
+            </div>
+          </div>
+          <h2><b>Drag</b> the slider to provide an estimate</h2>
+          <paper-slider class="intro-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
+          <paper-button class="intro-next" style="display: none;">Next</paper-button>
+        </div>
+        <div class="image animated fadeIn">
+          <div class="dot d1"></div>
+          <div class="dot d2"></div>
+          <div class="dot d3"></div>
+          <div class="dot d4"></div>
+          <div class="dot d5"></div>
+          <div class="dot d6"></div>
+          <div class="dot d7"></div>
+          <div class="dot d8"></div>
+          <div class="dot d9"></div>
+          <div class="dot d10"></div>
+          <div class="dot d11"></div>
+          <div class="dot d12"></div>
+          <div class="dot d13"></div>
+          <div class="dot d14"></div>
+          <div class="dot d15"></div>
+          <div class="dot dx"></div>
+          <div class="dot dy"></div>
+          <div class="dot dz"></div>
+          <paper-ripple></paper-ripple>
         </div>
       </div>
-      <h2><b>Drag</b> the slider to provide an estimate</h2>
-      <paper-slider class="intro-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
-      <paper-button class="intro-next" style="display: none;">Next</paper-button>
-    </div>
-    <div class="image animated fadeIn">
-      <div class="dot d1"></div>
-      <div class="dot d2"></div>
-      <div class="dot d3"></div>
-      <div class="dot d4"></div>
-      <div class="dot d5"></div>
-      <div class="dot d6"></div>
-      <div class="dot d7"></div>
-      <div class="dot d8"></div>
-      <div class="dot d9"></div>
-      <div class="dot d10"></div>
-      <div class="dot d11"></div>
-      <div class="dot d12"></div>
-      <div class="dot d13"></div>
-      <div class="dot d14"></div>
-      <div class="dot d15"></div>
-      <div class="dot dx"></div>
-      <div class="dot dy"></div>
-      <div class="dot dz"></div>
-      <paper-ripple></paper-ripple>
-    </div>
-  </div>
-</template>
+    </template>
 
-<template name="bottom">
-  <div class="bottom">
-    <div class="verify" style="display: none;">
-      <div class="q-count">{{question}} of 15</div>
-      <h1>Can you see the <u>flashing</u> dot?</h1>
-      <h2>Please, click on it to continue...</h2>
-    </div>
-    <div class="question q1 animated fadeInDown" style="display: none;">
-      <div class="q-count">{{question}} of 15</div>
-      <h1>Given the <u>flashing</u> dot position...</h1>
-      <h2>What is your level of confidence?</h2>
-      <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
-    </div>
-    <div class="question q2 animated fadeInDown" style="display: none;">
-      <div class="q-count">{{question}} of 15</div>
-      <h1>Given the <u>flashing</u> dot position...</h1>
-      <h2>What is your level of confidence?</h2>
-      <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
-    </div>
-    <div class="question q3 animated fadeInDown" style="display: none;">
-      <div class="q-count">{{question}} of 15</div>
-      <h1>Given the <u>flashing</u> dot position...</h1>
-      <h2>What is your level of confidence?</h2>
-      <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
-    </div>
-    <div class="question q4 animated fadeInDown" style="display: none;">
-      <div class="q-count">{{question}} of 15</div>
-      <h1>Given the <u>flashing</u> dot position...</h1>
-      <h2>What is your level of confidence?</h2>
-      <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
-    </div>
-    <div class="question q5 animated fadeInDown" style="display: none;">
-      <div class="q-count">{{question}} of 15</div>
-      <h1>Given the <u>flashing</u> dot position...</h1>
-      <h2>What is your level of confidence?</h2>
-      <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
-    </div>
-    <div class="question q6 animated fadeInDown" style="display: none;">
-      <div class="q-count">{{question}} of 15</div>
-      <h1>Given the <u>flashing</u> dot position...</h1>
-      <h2>What is your level of confidence?</h2>
-      <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
-    </div>
-    <div class="question q7 animated fadeInDown" style="display: none;">
-      <div class="q-count">{{question}} of 15</div>
-      <h1>Given the <u>flashing</u> dot position...</h1>
-      <h2>What is your level of confidence?</h2>
-      <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
-    </div>
-    <div class="question q8 animated fadeInDown" style="display: none;">
-      <div class="q-count">{{question}} of 15</div>
-      <h1>Given the <u>flashing</u> dot position...</h1>
-      <h2>What is your level of confidence?</h2>
-      <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
-    </div>
-    <div class="question q9 animated fadeInDown" style="display: none;">
-      <div class="q-count">{{question}} of 15</div>
-      <h1>Given the <u>flashing</u> dot position...</h1>
-      <h2>What is your level of confidence?</h2>
-      <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
-    </div>
-    <div class="question q10 animated fadeInDown" style="display: none;">
-      <div class="q-count">{{question}} of 15</div>
-      <h1>Given the <u>flashing</u> dot position...</h1>
-      <h2>What is your level of confidence?</h2>
-      <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
-    </div>
-    <div class="question q11 animated fadeInDown" style="display: none;">
-      <div class="q-count">{{question}} of 15</div>
-      <h1>Given the <u>flashing</u> dot position...</h1>
-      <h2>What is your level of confidence?</h2>
-      <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
-    </div>
-    <div class="question q12 animated fadeInDown" style="display: none;">
-      <div class="q-count">{{question}} of 15</div>
-      <h1>Given the <u>flashing</u> dot position...</h1>
-      <h2>What is your level of confidence?</h2>
-      <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
-    </div>
-    <div class="question q13 animated fadeInDown" style="display: none;">
-      <div class="q-count">{{question}} of 15</div>
-      <h1>Given the <u>flashing</u> dot position...</h1>
-      <h2>What is your level of confidence?</h2>
-      <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
-    </div>
-    <div class="question q14 animated fadeInDown" style="display: none;">
-      <div class="q-count">{{question}} of 15</div>
-      <h1>Given the <u>flashing</u> dot position...</h1>
-      <h2>What is your level of confidence?</h2>
-      <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
-    </div>
-    <div class="question q15 animated fadeInDown" style="display: none;">
-      <div class="q-count">{{question}} of 15</div>
-      <h1>Given the <u>flashing</u> dot position...</h1>
-      <h2>What is your level of confidence?</h2>
-      <paper-slider class="q-slider" pin snaps max="5" max-markers="5" step="1" value="3"></paper-slider>
-    </div>
-    <div class="thanks animated fadeInDown" style="display: none;">
-      <h1>Thank you, one last thing!</h1>
-      <h2>Please, <a href="">click here</a> to answer a <b>short questionnaire</b> and get your <b>survey code.</b></h2>
-    </div>
-    <paper-button class="button-next">Next</paper-button>
-    <paper-button class="button-finish">Finish</paper-button>
-  </div>
-</template>
+    <template name="bottom">
+      <div class="bottom">
+        <div class="verify" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Can you see the <u>flashing</u> dot?</h1>
+          <h2>Please, click on it to continue...</h2>
+        </div>
+        <div class="question q1 animated fadeInDown" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Look at the <u class="vizq">area</u> in which the data point sits...</h1>
+          <h2>How accurate is the data represented by the data point?</h2>
+          <paper-slider class="q-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
+        </div>
+        <div class="question q2 animated fadeInDown" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Look at the <u class="vizq">area</u> in which the data point sits...</h1>
+          <h2>How accurate is the data represented by the data point?</h2>
+          <paper-slider class="q-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
+        </div>
+        <div class="question q3 animated fadeInDown" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Look at the <u class="vizq">area</u> in which the data point sits...</h1>
+          <h2>How accurate is the data represented by the data point?</h2>
+          <paper-slider class="q-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
+        </div>
+        <div class="question q4 animated fadeInDown" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Look at the <u class="vizq">area</u> in which the data point sits...</h1>
+          <h2>How accurate is the data represented by the data point?</h2>
+          <paper-slider class="q-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
+        </div>
+        <div class="question q5 animated fadeInDown" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Look at the <u class="vizq">area</u> in which the data point sits...</h1>
+          <h2>How accurate is the data represented by the data point?</h2>
+          <paper-slider class="q-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
+        </div>
+        <div class="question q6 animated fadeInDown" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Look at the <u class="vizq">area</u> in which the data point sits...</h1>
+          <h2>How accurate is the data represented by the data point?</h2>
+          <paper-slider class="q-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
+        </div>
+        <div class="question q7 animated fadeInDown" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Look at the <u class="vizq">area</u> in which the data point sits...</h1>
+          <h2>How accurate is the data represented by the data point?</h2>
+          <paper-slider class="q-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
+        </div>
+        <div class="question q8 animated fadeInDown" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Look at the <u class="vizq">area</u> in which the data point sits...</h1>
+          <h2>How accurate is the data represented by the data point?</h2>
+          <paper-slider class="q-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
+        </div>
+        <div class="question q9 animated fadeInDown" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Look at the <u class="vizq">area</u> in which the data point sits...</h1>
+          <h2>How accurate is the data represented by the data point?</h2>
+          <paper-slider class="q-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
+        </div>
+        <div class="question q10 animated fadeInDown" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Look at the <u class="vizq">area</u> in which the data point sits...</h1>
+          <h2>How accurate is the data represented by the data point?</h2>
+          <paper-slider class="q-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
+        </div>
+        <div class="question q11 animated fadeInDown" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Look at the <u class="vizq">area</u> in which the data point sits...</h1>
+          <h2>How accurate is the data represented by the data point?</h2>
+          <paper-slider class="q-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
+        </div>
+        <div class="question q12 animated fadeInDown" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Look at the <u class="vizq">area</u> in which the data point sits...</h1>
+          <h2>How accurate is the data represented by the data point?</h2>
+          <paper-slider class="q-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
+        </div>
+        <div class="question q13 animated fadeInDown" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Look at the <u class="vizq">area</u> in which the data point sits...</h1>
+          <h2>How accurate is the data represented by the data point?</h2>
+          <paper-slider class="q-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
+        </div>
+        <div class="question q14 animated fadeInDown" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Look at the <u class="vizq">area</u> in which the data point sits...</h1>
+          <h2>How accurate is the data represented by the data point?</h2>
+          <paper-slider class="q-slider" pin snaps min="1"  max="5" max-markers="5" step="1" value="3"></paper-slider>
+        </div>
+        <div class="question q15 animated fadeInDown" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Look at the <u class="vizq">area</u> in which the data point sits...</h1>
+          <h2>How accurate is the data represented by the data point?</h2>
+          <paper-slider class="q-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
+        </div>
+        <paper-button class="button-next">Next</paper-button>
+        <paper-button class="button-finish">Finish</paper-button>
+      </div>
+    </template>

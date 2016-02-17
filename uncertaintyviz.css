@@ -113,18 +113,11 @@ h3 {
   left: 43%;
 }
 
-.button-begin {
-  position: absolute;
-  right: 100px;
-  bottom: 40px;
-  border: 1px solid #bdc3c7;
-}
-
 .button-next {
   display: none;
   position: absolute;
   right: 100px;
-  bottom: 50%;
+  bottom: -40px;
   border: 1px solid #bdc3c7;
 }
 
@@ -132,7 +125,7 @@ h3 {
   display: none;
   position: absolute;
   right: 100px;
-  bottom: 50%;
+  bottom: -40px;
   border: 1px solid #bdc3c7;
 }
 
@@ -230,4 +223,57 @@ paper-ripple {
 
 a {
   cursor: pointer;
+}
+
+.tutorial {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 600px;
+  position: relative;
+  height: 450px;
+}
+
+.tutorial p {
+  font-size: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.tutorial .tut-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+}
+
+.tutorial .tut-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+}
+
+.tutorial .tut-sample {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.button-tut-next {
+  border: 1px solid #bdc3c7;
+  margin-left: 45%;
+}
+
+.button-begin {
+  border: 1px solid #bdc3c7;
+  margin-left: 42%;
+  margin-top: 10px;
+}
+
+.question h1 {
+  /*max-width: 400px;*/
 }

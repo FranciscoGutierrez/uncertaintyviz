@@ -36,61 +36,6 @@ if (Meteor.isClient) {
   Start button events...
   **/
   Template.top.events({
-    'click .button-begin': function () {
-      $(".top h2").text("Please, answer the following questions...")
-      /*
-      * Generate a Random number between 1-15;
-      */
-      var o = Session.get("intro");
-      for(var j,x,i= o.length; i; j=Math.floor(Math.random()*i),x=o[--i],o[i]=o[j],o[j]=x);
-      Session.set("intro", o);
-      if(Session.get("viz") == "blur") {
-        $(".button-begin").fadeOut();
-        $(".chart-dummy").fadeOut(function(){
-          $(".introduction").fadeIn();
-        });
-        $(".img-left").attr("src","viz/b1.png");
-        $(".img-middle").attr("src","viz/b"+Session.get("intro")[0]+".png");
-        $(".img-right").attr("src","viz/b5.png");
-      }
-      if(Session.get("viz") == "opacity") {
-        $(".button-begin").fadeOut();
-        $(".chart-dummy").fadeOut(function(){
-          $(".introduction").fadeIn();
-        });
-        $(".img-left").attr("src","viz/o1.png");
-        $(".img-middle").attr("src","viz/o"+Session.get("intro")[0]+".png");
-        $(".img-right").attr("src","viz/o5.png");
-      }
-      if(Session.get("viz") == "grid") {
-        $(".button-begin").fadeOut();
-        $(".chart-dummy").fadeOut(function(){
-          $(".introduction").fadeIn();
-        });
-
-        $(".img-left").attr("src","viz/s1.png");
-        $(".img-middle").attr("src","viz/s"+Session.get("intro")[0]+".png");
-        $(".img-right").attr("src","viz/s5.png");
-      }
-      if(Session.get("viz") == "lines") {
-        $(".button-begin").fadeOut();
-        $(".chart-dummy").fadeOut(function(){
-          $(".introduction").fadeIn();
-        });
-        $(".img-left").attr("src","viz/l1.png");
-        $(".img-middle").attr("src","viz/l"+Session.get("intro")[0]+".png");
-        $(".img-right").attr("src","viz/l5.png");
-      }
-      if(Session.get("viz") == "texture") {
-        $(".button-begin").fadeOut();
-        $(".chart-dummy").fadeOut(function(){
-          $(".introduction").fadeIn();
-        });
-        $(".img-left").attr("src","viz/t1.png");
-        $(".img-middle").attr("src","viz/t"+Session.get("intro")[0]+".png");
-        $(".img-right").attr("src","viz/t5.png");
-      }
-    }
   });
 
   Template.middle.helpers({
@@ -171,143 +116,142 @@ if (Meteor.isClient) {
             }
           }
           /*** FADE IN CHART PART WITH DOTS AND EVERYTHING ***/
-          $(".chart-dummy").fadeOut(function(){
-            $(".top h2").text("Please, answer the questions below the chart");
-            $(".button-begin").fadeOut();
-            $(".image").fadeIn(function(){
-              $(".bottom").fadeIn(function(){
-                $(".verify").fadeIn();
-              });
-              if(Session.get("evaluation") == "regression") {
-                /**** ULevel 1 ****/
-                $(".d1").css("top","87%");
-                $(".d1").css("left","13%");
-                $(".d1").fadeIn();
-                $(".d2").css("top","53%");
-                $(".d2").css("left","80%");
-                $(".d2").fadeIn();
-                $(".d3").css("top","67%");
-                $(".d3").css("left","30%");
-                $(".d3").fadeIn();
-                /**** ULevel 2 ****/
-                $(".d4").css("top","40%");
-                $(".d4").css("left","40%");
-                $(".d4").fadeIn();
-                $(".d5").css("top","50%");
-                $(".d5").css("left","50%");
-                $(".d5").fadeIn();
-                $(".d6").css("top","66%");
-                $(".d6").css("left","38%");
-                $(".d6").fadeIn();
-                /**** ULevel 3 ****/
-                $(".d7").css("top","28%");
-                $(".d7").css("left","70%");
-                $(".d7").fadeIn();
-                $(".d8").css("top","58%");
-                $(".d8").css("right","71%");
-                $(".d8").fadeIn();
-                $(".d9").css("top","40%");
-                $(".d9").css("right","12%");
-                $(".d9").fadeIn();
-                /**** ULevel 4 ****/
-                $(".d10").css("top","68%");
-                $(".d10").css("right","80%");
-                $(".d10").fadeIn();
-                $(".d11").css("top","38%");
-                $(".d11").css("right","38%");
-                $(".d11").fadeIn();
-                $(".d12").css("top","80%");
-                $(".d12").css("right","77%");
-                $(".d12").fadeIn();
-                /**** ULevel 5 ****/
-                $(".d13").css("top","58%");
-                $(".d13").css("right","36%");
-                $(".d13").fadeIn();
-                $(".d14").css("top","22%");
-                $(".d14").css("right","8%");
-                $(".d14").fadeIn();
-                $(".d15").css("top","41%");
-                $(".d15").css("right","27%");
-                $(".d15").fadeIn();
-                /***** outguys ****/
-                $(".dx").css("top","80%");
-                $(".dx").css("right","27%");
-                $(".dx").fadeIn();
-                $(".dy").css("top","75%");
-                $(".dy").css("right","14%");
-                $(".dy").fadeIn();
-                $(".dz").css("top","12%");
-                $(".dz").css("left","27%");
-                $(".dz").fadeIn();
-                $(".d"+Session.get("questions")[0]).addClass("animated infinite flash");
-              }
-              /***** CLUSTER ****/
-              if(Session.get("evaluation") == "cluster") {
-                /**** ULevel 1 ****/
-                $(".d1").css("top","26%");
-                $(".d1").css("left","72%");
-                $(".d1").fadeIn();
-                $(".d2").css("top","74%");
-                $(".d2").css("left","44%");
-                $(".d2").fadeIn();
-                $(".d3").css("top","38%");
-                $(".d3").css("left","28%");
-                $(".d3").fadeIn();
-                /**** ULevel 2 ****/
-                $(".d4").css("top","42%");
-                $(".d4").css("left","25%");
-                $(".d4").fadeIn();
-                $(".d5").css("top","22%");
-                $(".d5").css("left","78%");
-                $(".d5").fadeIn();
-                $(".d6").css("top","70%");
-                $(".d6").css("left","40%");
-                $(".d6").fadeIn();
-                /**** ULevel 3 ****/
-                $(".d7").css("top","67%");
-                $(".d7").css("left","51%");
-                $(".d7").fadeIn();
-                $(".d8").css("top","40%");
-                $(".d8").css("left","40%");
-                $(".d8").fadeIn();
-                $(".d9").css("top","31%");
-                $(".d9").css("right","18%");
-                $(".d9").fadeIn();
-                /**** ULevel 4 ****/
-                $(".d10").css("top","27%");
-                $(".d10").css("left","22%");
-                $(".d10").fadeIn();
-                $(".d11").css("top","22%");
-                $(".d11").css("right","35%");
-                $(".d11").fadeIn();
-                $(".d12").css("top","80%");
-                $(".d12").css("right","42%");
-                $(".d12").fadeIn();
-                /**** ULevel 5 ****/
-                $(".d13").css("top","56%");
-                $(".d13").css("right","71%");
-                $(".d13").fadeIn();
-                $(".d14").css("top","89%");
-                $(".d14").css("left","43%");
-                $(".d14").fadeIn();
-                $(".d15").css("top","39%");
-                $(".d15").css("right","27%");
-                $(".d15").fadeIn();
-                /***** outguys ****/
-                $(".dx").css("top","80%");
-                $(".dx").css("right","64%");
-                $(".dx").fadeIn();
-                $(".dy").css("top","14%");
-                $(".dy").css("right","14%");
-                $(".dy").fadeIn();
-                $(".dz").css("top","22%");
-                $(".dz").css("left","29%");
-                $(".dz").fadeIn();
-                $(".d"+Session.get("questions")[0]).addClass("animated infinite flash");
-              }
+          $(".top h1").text("Estimate the accuracy");
+          $(".top h2").text("Please, estimate the accuracy of the flashing data point.");
+          $(".button-begin").fadeOut();
+          $(".image").fadeIn(function(){
+            $(".bottom").fadeIn(function(){
+              $(".verify").fadeIn();
             });
-            /***/
+            if(Session.get("evaluation") == "regression") {
+              /**** ULevel 1 ****/
+              $(".d1").css("top","87%");
+              $(".d1").css("left","13%");
+              $(".d1").fadeIn();
+              $(".d2").css("top","53%");
+              $(".d2").css("left","80%");
+              $(".d2").fadeIn();
+              $(".d3").css("top","67%");
+              $(".d3").css("left","30%");
+              $(".d3").fadeIn();
+              /**** ULevel 2 ****/
+              $(".d4").css("top","40%");
+              $(".d4").css("left","40%");
+              $(".d4").fadeIn();
+              $(".d5").css("top","50%");
+              $(".d5").css("left","50%");
+              $(".d5").fadeIn();
+              $(".d6").css("top","66%");
+              $(".d6").css("left","38%");
+              $(".d6").fadeIn();
+              /**** ULevel 3 ****/
+              $(".d7").css("top","28%");
+              $(".d7").css("left","70%");
+              $(".d7").fadeIn();
+              $(".d8").css("top","58%");
+              $(".d8").css("right","71%");
+              $(".d8").fadeIn();
+              $(".d9").css("top","40%");
+              $(".d9").css("right","12%");
+              $(".d9").fadeIn();
+              /**** ULevel 4 ****/
+              $(".d10").css("top","68%");
+              $(".d10").css("right","80%");
+              $(".d10").fadeIn();
+              $(".d11").css("top","38%");
+              $(".d11").css("right","38%");
+              $(".d11").fadeIn();
+              $(".d12").css("top","80%");
+              $(".d12").css("right","77%");
+              $(".d12").fadeIn();
+              /**** ULevel 5 ****/
+              $(".d13").css("top","58%");
+              $(".d13").css("right","36%");
+              $(".d13").fadeIn();
+              $(".d14").css("top","22%");
+              $(".d14").css("right","8%");
+              $(".d14").fadeIn();
+              $(".d15").css("top","41%");
+              $(".d15").css("right","27%");
+              $(".d15").fadeIn();
+              /***** outguys ****/
+              $(".dx").css("top","80%");
+              $(".dx").css("right","27%");
+              $(".dx").fadeIn();
+              $(".dy").css("top","75%");
+              $(".dy").css("right","14%");
+              $(".dy").fadeIn();
+              $(".dz").css("top","12%");
+              $(".dz").css("left","27%");
+              $(".dz").fadeIn();
+              $(".d"+Session.get("questions")[0]).addClass("animated infinite flash");
+            }
+            /***** CLUSTER ****/
+            if(Session.get("evaluation") == "cluster") {
+              /**** ULevel 1 ****/
+              $(".d1").css("top","26%");
+              $(".d1").css("left","72%");
+              $(".d1").fadeIn();
+              $(".d2").css("top","74%");
+              $(".d2").css("left","44%");
+              $(".d2").fadeIn();
+              $(".d3").css("top","38%");
+              $(".d3").css("left","28%");
+              $(".d3").fadeIn();
+              /**** ULevel 2 ****/
+              $(".d4").css("top","42%");
+              $(".d4").css("left","25%");
+              $(".d4").fadeIn();
+              $(".d5").css("top","22%");
+              $(".d5").css("left","78%");
+              $(".d5").fadeIn();
+              $(".d6").css("top","70%");
+              $(".d6").css("left","40%");
+              $(".d6").fadeIn();
+              /**** ULevel 3 ****/
+              $(".d7").css("top","67%");
+              $(".d7").css("left","51%");
+              $(".d7").fadeIn();
+              $(".d8").css("top","40%");
+              $(".d8").css("left","40%");
+              $(".d8").fadeIn();
+              $(".d9").css("top","31%");
+              $(".d9").css("right","18%");
+              $(".d9").fadeIn();
+              /**** ULevel 4 ****/
+              $(".d10").css("top","27%");
+              $(".d10").css("left","22%");
+              $(".d10").fadeIn();
+              $(".d11").css("top","22%");
+              $(".d11").css("right","35%");
+              $(".d11").fadeIn();
+              $(".d12").css("top","80%");
+              $(".d12").css("right","42%");
+              $(".d12").fadeIn();
+              /**** ULevel 5 ****/
+              $(".d13").css("top","56%");
+              $(".d13").css("right","71%");
+              $(".d13").fadeIn();
+              $(".d14").css("top","89%");
+              $(".d14").css("left","43%");
+              $(".d14").fadeIn();
+              $(".d15").css("top","39%");
+              $(".d15").css("right","27%");
+              $(".d15").fadeIn();
+              /***** outguys ****/
+              $(".dx").css("top","80%");
+              $(".dx").css("right","64%");
+              $(".dx").fadeIn();
+              $(".dy").css("top","14%");
+              $(".dy").css("right","14%");
+              $(".dy").fadeIn();
+              $(".dz").css("top","22%");
+              $(".dz").css("left","29%");
+              $(".dz").fadeIn();
+              $(".d"+Session.get("questions")[0]).addClass("animated infinite flash");
+            }
           });
+          /***/
           /***/
         });
       }
@@ -320,6 +264,65 @@ if (Meteor.isClient) {
     },
     "click .intro-slider": function(){
       $(".intro-next").fadeIn();
+    },
+    "click .button-tut-next": function(){
+      $(".tut-1").fadeOut(function(){
+        $(".tut-2").fadeIn();
+      });
+    },
+    'click .button-begin': function () {
+      $(".top h1").text("Guess the accuracy");
+      $(".top h2").text("Please, estimate the accuracy of the data point in the visualization.");
+      $(".tutorial").fadeOut(function(){
+        $(".tutorial").remove();
+      });
+      /*
+      * Generate a Random number between 1-15;
+      */
+      var o = Session.get("intro");
+      for(var j,x,i= o.length; i; j=Math.floor(Math.random()*i),x=o[--i],o[i]=o[j],o[j]=x);
+      Session.set("intro", o);
+      if(Session.get("viz") == "blur") {
+        $(".button-begin").fadeOut(function(){
+          $(".introduction").fadeIn();
+        });
+        $(".img-left").attr("src","viz/b1.png");
+        $(".img-middle").attr("src","viz/b"+Session.get("intro")[0]+".png");
+        $(".img-right").attr("src","viz/b5.png");
+      }
+      if(Session.get("viz") == "opacity") {
+        $(".button-begin").fadeOut(function(){
+          $(".introduction").fadeIn();
+        });
+        $(".img-left").attr("src","viz/o1.png");
+        $(".img-middle").attr("src","viz/o"+Session.get("intro")[0]+".png");
+        $(".img-right").attr("src","viz/o5.png");
+      }
+      if(Session.get("viz") == "grid") {
+        $(".button-begin").fadeOut(function(){
+          $(".introduction").fadeIn();
+        });
+
+        $(".img-left").attr("src","viz/s1.png");
+        $(".img-middle").attr("src","viz/s"+Session.get("intro")[0]+".png");
+        $(".img-right").attr("src","viz/s5.png");
+      }
+      if(Session.get("viz") == "lines") {
+        $(".button-begin").fadeOut(function(){
+          $(".introduction").fadeIn();
+        });
+        $(".img-left").attr("src","viz/l1.png");
+        $(".img-middle").attr("src","viz/l"+Session.get("intro")[0]+".png");
+        $(".img-right").attr("src","viz/l5.png");
+      }
+      if(Session.get("viz") == "texture") {
+        $(".button-begin").fadeOut(function(){
+          $(".introduction").fadeIn();
+        });
+        $(".img-left").attr("src","viz/t1.png");
+        $(".img-middle").attr("src","viz/t"+Session.get("intro")[0]+".png");
+        $(".img-right").attr("src","viz/t5.png");
+      }
     }
   });
 
@@ -424,12 +427,11 @@ if (Meteor.isClient) {
         $(".button-finish").fadeOut(function(){
           $(".top h1").fadeOut();
           $(".top h2").fadeOut();
-          $(".chart-dummy").fadeIn();
           if(Session.get("evaluation") == "cluster") {
-            $(".thankscluster").fadeIn();
+            $(".thanks").fadeIn();
           }
           if(Session.get("evaluation") == "regression") {
-            $(".thanksregression").fadeIn();
+            $(".thanks").fadeIn();
           }
         });
       });
