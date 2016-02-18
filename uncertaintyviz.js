@@ -1,14 +1,17 @@
 if (Meteor.isClient) {
   //Data
   Users     = new Meteor.Collection('users');
+  Intro     = new Meteor.Collection('intro');
   Questions = new Meteor.Collection('questions');
-  var now = new Date();
+  Actions   = new Meteor.Collection('actions');
+
+
   Session.set("userID", Math.random().toString(36).slice(-8));
   Session.set("currentQuestion",1);
   Session.set("currentIntro",1);
   Session.set("trust", "5");
-  Session.setDefault("timest",now);
-  Session.setDefault("timestq",now);
+  Session.setDefault("timest",new Date());
+  Session.setDefault("timestq",new Date());
   /*questions*/
   Session.setDefault("questions",[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
   Session.setDefault("intro",[1,2,3,4,5]);
@@ -38,6 +41,20 @@ if (Meteor.isClient) {
   Start button events...
   **/
   Template.top.events({
+    "click": function(event,template){
+      /*** Interaction Recorder ***/
+      var self = this;
+      if(event) {
+        Actions.insert({
+          "sessionId": Session.get("userID"),
+          "target": $(event.target).attr("track"),
+          "x": (event.pageX - $('.top').offset().left),
+          "y": (event.pageY - $('.top').offset().top),
+          "timestamp": new Date(),
+          "timestampms": new Date().getTime()
+        });
+      }
+    }
   });
 
   Template.middle.helpers({
@@ -52,6 +69,20 @@ if (Meteor.isClient) {
   });
 
   Template.middle.events({
+    "click": function(event,template){
+      /*** Interaction Recorder ***/
+      var self = this;
+      if(event) {
+        Actions.insert({
+          "sessionId": Session.get("userID"),
+          "target": $(event.target).attr("track"),
+          "x": (event.pageX - $('.top').offset().left),
+          "y": (event.pageY - $('.top').offset().top),
+          "timestamp": new Date(),
+          "timestampms": new Date().getTime()
+        });
+      }
+    },
     "click .intro-next": function(){
       if(Session.get("currentIntro") <= 5) {
         $(".intro-next").fadeOut();
@@ -263,6 +294,7 @@ if (Meteor.isClient) {
       /***/
     },
     "click .dot.infinite": function(){
+      Session.set("timestq", new Date());
       if(Session.get("currentQuestion") == 3) {
         $(".verify").fadeOut(function(){
           $(".r1").fadeIn();
@@ -358,6 +390,20 @@ if (Meteor.isClient) {
   });
 
   Template.bottom.events({
+    "click": function(event,template){
+      /*** Interaction Recorder ***/
+      var self = this;
+      if(event) {
+        Actions.insert({
+          "sessionId": Session.get("userID"),
+          "target": $(event.target).attr("track"),
+          "x": (event.pageX - $('.top').offset().left),
+          "y": (event.pageY - $('.top').offset().top),
+          "timestamp": new Date(),
+          "timestampms": new Date().getTime()
+        });
+      }
+    },
     "click .r-slider": function(){
       $(".r-next").fadeIn();
     },
@@ -398,78 +444,78 @@ if (Meteor.isClient) {
       }
     },
     'click .button-next': function () {
+      /**
+      * Save to the database;
+      **/
+      Questions.insert({
+        "sessionId": Session.get("userID"),
+        "question":  Session.get("currentQuestion"),
+        "answer": $(".q-slider").attr("value"),
+        "dotx": $(".flash").position().left,
+        "doty": 400 - $(".flash").position().top,
+        "timestampSt": Session.get("timestq").getTime(),
+        "timestampEd": new Date().getTime(),
+        "timespent": new Date().getTime() - Session.get("timestq").getTime(),
+        "evaluation": Session.get("evaluation"),
+        "viz": Session.get("viz")
+      });
+      /** Animate visualization **/
       $(".dot").removeClass("animated flash");
+      Session.set("q"+Session.get("currentQuestion"), $(".q-slider").attr("value"));
+      /** Sum +1 **/
       Session.set("currentQuestion", Session.get("currentQuestion") + 1);
+      /** ----- **/
       $(".d"+Session.get("questions")[Session.get("currentQuestion")-1]).addClass("animated infinite flash");
       $(".question").fadeOut(function(){
         $(".button-next").fadeOut(function(){
           $(".verify").fadeIn();
         });
       });
-      // if(Session.get("answer")){
-      //   /**
-      //   Save to the database; if sucessful, proceed.
-      //   **/
-      //   var now = new Date();
-      //   Questions.insert({
-      //     "sessionId": Meteor.connection._lastSessionId,
-      //     "question": Session.get("question"),
-      //     "answer": Session.get("answer"),
-      //     "dotx": $(".dot").position().left,
-      //     "doty": 400 - $(".dot").position().top,
-      //     "timestampSt": Session.get("timestq").getTime(),
-      //     "timestampEd": now.getTime(),
-      //     "timespent": now.getTime() - Session.get("timestq").getTime(),
-      //     "evaluation": Session.get("evaluation")
-      //   });
-      //   Session.set("timestq",now);
     },
     'click .button-finish': function () {
-      // if(Session.get("answer")) {
-      //   var now = new Date();
-      //
-      //   Questions.insert({
-      //     "sessionId": Meteor.connection._lastSessionId,
-      //     "question": Session.get("question"),
-      //     "answer": Session.get("answer"),
-      //     "dotx": $(".dot").position().left,
-      //     "doty": 400 - $(".dot").position().top,
-      //     "timestampSt": Session.get("timestq").getTime(),
-      //     "timestampEd": now.getTime(),
-      //     "timespent": now.getTime() - Session.get("timestq").getTime(),
-      //     "evaluation": Session.get("evaluation"),
-      //     "viz": Session.get("viz")
-      //   });
-      //
-      //   Users.insert({
-      //     "sessionId": Meteor.connection._lastSessionId,
-      //     "timestampSt": Session.get("timest").getTime(),
-      //     "timestampEd": now.getTime(),
-      //     "timeSpent" : now.getTime() - Session.get("timest").getTime(),
-      //     "evaluation": Session.get("evaluation"),
-      //     "viz": Session.get("viz"),
-      //         "q1": Session.get("q1"), level of uncertainty 1
-      //         "q2": Session.get("q2"), level of uncertainty 1
-      //         "q3": Session.get("q3"), level of uncertainty 1
-      //         "q4": Session.get("q4"), level of uncertainty 2
-      //         "q5": Session.get("q5"), level of uncertainty 2
-      //         "q6": Session.get("q6"), level of uncertainty 2
-      //         "q7": Session.get("q7"), level of uncertainty 3
-      //         "q8": Session.get("q8"), level of uncertainty 3
-      //         "q9": Session.get("q9"), level of uncertainty 3
-      //         "q10": Session.get("q10"), level of uncertainty 4
-      //         "q11": Session.get("q11"), level of uncertainty 4
-      //         "q12": Session.get("q12"), level of uncertainty 4
-      //         "q13": Session.get("q13"), level of uncertainty 5
-      //         "q14": Session.get("q14"), level of uncertainty 5
-      //         "q15": Session.get("q15"), level of uncertainty 5
-      //         "a1": Session.get("a1"),
-      //         "a2": Session.get("a2"),
-      //         "a3": Session.get("a3"),
-      //         "a4": Session.get("a4"),
-      //         "a5":Session.get("a5"),
-      // });
-      //
+      /*** START OF MONGODB Interaction ***/
+      Questions.insert({
+        "sessionId": Session.get("userID"),
+        "question":  Session.get("currentQuestion"),
+        "answer": $(".q-slider").attr("value"),
+        "dotx": $(".flash").position().left,
+        "doty": 400 - $(".flash").position().top,
+        "timestampSt": Session.get("timestq").getTime(),
+        "timestampEd": new Date().getTime(),
+        "timespent": new Date().getTime() - Session.get("timestq").getTime(),
+        "evaluation": Session.get("evaluation"),
+        "viz": Session.get("viz")
+      });
+
+      Users.insert({
+        "sessionId": Session.get("userID"),
+        "timestampSt": Session.get("timest").getTime(),
+        "timestampEd": new Date().getTime(),
+        "timeSpent" : new Date().getTime() - Session.get("timest").getTime(),
+        "evaluation": Session.get("evaluation"),
+        "viz": Session.get("viz"),
+        "q1": Session.get("q1"),
+        "q2": Session.get("q2"),
+        "q3": Session.get("q3"),
+        "q4": Session.get("q4"),
+        "q5": Session.get("q5"),
+        "q6": Session.get("q6"),
+        "q7": Session.get("q7"),
+        "q8": Session.get("q8"),
+        "q9": Session.get("q9"),
+        "q10": Session.get("q10"),
+        "q11": Session.get("q11"),
+        "q12": Session.get("q12"),
+        "q13": Session.get("q13"),
+        "q14": Session.get("q14"),
+        "q15": Session.get("q15"),
+        "a1": Session.get("a1"),
+        "a2": Session.get("a2"),
+        "a3": Session.get("a3"),
+        "a4": Session.get("a4"),
+        "a5":Session.get("a5")
+      });
+      /*** END OF MONGODB Interaction ***/
       $(".image").fadeOut();
       $(".question").fadeOut(function(){
         $(".button-finish").fadeOut(function(){
@@ -496,6 +542,9 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
   Users     = new Meteor.Collection('users');
+  Intro     = new Meteor.Collection('intro');
   Questions = new Meteor.Collection('questions');
+  Actions   = new Meteor.Collection('actions');
+
   Meteor.startup(function(){});
 }
