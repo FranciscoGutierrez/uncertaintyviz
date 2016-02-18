@@ -114,6 +114,14 @@ h3 {
   border: 1px solid #bdc3c7;
 }
 
+.r-next {
+  display: none;
+  position: absolute;
+  right: 100px;
+  bottom: -40px;
+  border: 1px solid #bdc3c7;
+}
+
 .button-finish {
   display: none;
   position: absolute;

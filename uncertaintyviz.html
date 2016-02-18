@@ -63,19 +63,25 @@
         <div class="tutorial-area tut-2" style="display: none;">
           <p style="text-align: center;">Then, we will do the same, but with the data points <b>mixed with others</b> in a visualization.
             We will ask you 15 times to <b>provide an estimate.</b></p>
-            <img src="viz/dum.png" alt="Less" height="100" width="100" class="tut-img-dum">
+            <br><br>
+            <!-- <img src="viz/dum.png" alt="Less" height="100" width="100" class="tut-img-dum"> -->
             <p style="text-align: center;">After, we will ask  you a few questions.</p>
+            <br><br>
             <p style="text-align: center;"><b>Important:</b> You have to complete the whole assigment <b>truthfully</b> in order to get your <b>Amazon Survey Code</b>.</p>
+            <br><br>
             <p style="text-align: center;">Have Fun!</p>
             <paper-button class="button-begin" style="display: none;">Ok, Let's go!</paper-button>
           </div>
         </div>
         <div class="thanks animated fadeInDown" style="display: none;">
           <h1 style="font-size: 32px;">Thank you!</h1>
-          <h2 style="width: 500px;">Please, <a class="gurl" href="">click here</a> to answer a <b>short questionnaire</b> and get your <b>Amazon Turk Survey Code.</b></h2>
           <br>
-          <h2 style="width: 500px;">Your assignment ID is: <b>asd-asd-asd-asd</b></h2>
-          <h2 style="width: 500px;">Important: Be sure to provide this exact number in the following questionnaire.</h2>
+          <h1 style="width: 500px; font-size: 24px;">Your assignment code is: <b>{{assignment}}</b></h1>
+          <br>
+          <h2 style="width: 500px;"><b>Important:</b> Be sure to copy and provide this code in the next questionnaire.</h2>
+          <br>
+          <h2 style="width: 500px;">Please, <a class="gurl" href="" target="_blank">click here</a> to answer a <b>short questionnaire</b> and get your <b>Amazon Turk </b>Survey Code.</h2>
+          <br>
         </div>
         <div class="introduction" style="display: none;">
           <h1 style="font-size: 32px;">Guess the value</h1>
@@ -219,6 +225,33 @@
           <h2>How accurate is the data represented by the data point?</h2>
           <paper-slider class="q-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
         </div>
+        <!-- hjhgfdasdas -->
+        <div class="robot r1 animated fadeInDown" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Look at the <u class="vizq">area</u> in which the data point sits...</h1>
+          <h2>Verification question, How much is 2 plus 1?</h2>
+          <paper-slider class="r-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
+        </div>
+        <div class="robot r2 animated fadeInDown" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Look at the <u class="vizq">area</u> in which the data point sits...</h1>
+          <h2>Verification question, How much is 3 plus 1?</h2>
+          <paper-slider class="r-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
+        </div>
+        <div class="robot r3 animated fadeInDown" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Look at the <u class="vizq">area</u> in which the data point sits...</h1>
+          <h2>Verification question, How much is 1 plus 1?</h2>
+          <paper-slider class="r-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
+        </div>
+        <div class="robot r4 animated fadeInDown" style="display: none;">
+          <div class="q-count">{{question}} of 15</div>
+          <h1>Look at the <u class="vizq">area</u> in which the data point sits...</h1>
+          <h2>Verification question, How much is 4 plus 1?</h2>
+          <paper-slider class="r-slider" pin snaps min="1" max="5" max-markers="5" step="1" value="3"></paper-slider>
+        </div>
+        <!-- hjhgfdasdas -->
+        <paper-button class="r-next">Next</paper-button>
         <paper-button class="button-next">Next</paper-button>
         <paper-button class="button-finish">Finish</paper-button>
       </div>

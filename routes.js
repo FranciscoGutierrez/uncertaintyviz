@@ -134,7 +134,7 @@ Router.route('/ro', function () {
   $(".tut-img-right").attr("src","viz/o5.png");
   $(".aex").text("opacity of a colour");
   $(".ashow").text("different degrees of color opacity");
-  $(".vizq").text("opacity of the zone");
+  $(".vizq").text("opacity");
   $(".gurl").attr("href","http://goo.gl/forms/smaSXJrZaz");
   $(".desc-small").html("The <b>higher</b> the <b>opacity</b>, the higher the <b>accuracy</b>.");
   $(".desc-large").html("The <b>lower</b> the <b>opacity</b>, the lower the <b>accuracy</b>.");

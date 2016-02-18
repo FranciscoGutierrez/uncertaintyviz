@@ -5,6 +5,7 @@ if (Meteor.isClient) {
   var now = new Date();
   Session.set("currentQuestion",1);
   Session.set("currentIntro",1);
+  Session.set("trust", "5");
   Session.setDefault("timest",now);
   Session.setDefault("timestq",now);
   /*questions*/
@@ -39,10 +40,13 @@ if (Meteor.isClient) {
   });
 
   Template.middle.helpers({
-    "value" : function(){
+    "value": function(){
       var a = Session.get("currentIntro");
       if(a>5) a = 5;
       return a;
+    },
+    "assignment": function() {
+      return Meteor.connection._lastSessionId;
     }
   });
 
@@ -258,9 +262,27 @@ if (Meteor.isClient) {
       /***/
     },
     "click .dot.infinite": function(){
-      $(".verify").fadeOut(function(){
-        $(".q"+Session.get("questions")[Session.get("currentQuestion")-1]).fadeIn();
-      });
+      if(Session.get("currentQuestion") == 3) {
+        $(".verify").fadeOut(function(){
+          $(".r1").fadeIn();
+        });
+      } else if(Session.get("currentQuestion") == 6) {
+        $(".verify").fadeOut(function(){
+          $(".r2").fadeIn();
+        });
+      } else if(Session.get("currentQuestion") == 9) {
+        $(".verify").fadeOut(function(){
+          $(".r3").fadeIn();
+        });
+      } else if(Session.get("currentQuestion") == 12) {
+        $(".verify").fadeOut(function(){
+          $(".r4").fadeIn();
+        });
+      } else {
+        $(".verify").fadeOut(function(){
+          $(".q"+Session.get("questions")[Session.get("currentQuestion")-1]).fadeIn();
+        });
+      }
     },
     "click .intro-slider": function(){
       $(".intro-next").fadeIn();
@@ -335,6 +357,31 @@ if (Meteor.isClient) {
   });
 
   Template.bottom.events({
+    "click .r-slider": function(){
+      $(".r-next").fadeIn();
+    },
+    "click .r-next": function(){
+      $(".robot").fadeOut(function(){
+        $(".r-next").fadeOut(function(){
+          if(Session.get("currentQuestion") == 3) {
+            $(".r1").remove();
+          } else if(Session.get("currentQuestion") == 6) {
+            $(".verify").fadeOut(function(){
+              $(".r2").remove();
+            });
+          } else if(Session.get("currentQuestion") == 9) {
+            $(".verify").fadeOut(function(){
+              $(".r3").remove();
+            });
+          } else if(Session.get("currentQuestion") == 12) {
+            $(".verify").fadeOut(function(){
+              $(".r4").remove();
+            });
+          }
+          $(".q"+Session.get("questions")[Session.get("currentQuestion")-1]).fadeIn();
+        });
+      });
+    },
     'click u': function () {
       $(".tiny-dot").addClass('animated flash');
       var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
