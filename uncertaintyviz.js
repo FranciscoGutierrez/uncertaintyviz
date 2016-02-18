@@ -3,6 +3,7 @@ if (Meteor.isClient) {
   Users     = new Meteor.Collection('users');
   Questions = new Meteor.Collection('questions');
   var now = new Date();
+  Session.set("userID", Math.random().toString(36).slice(-8));
   Session.set("currentQuestion",1);
   Session.set("currentIntro",1);
   Session.set("trust", "5");
@@ -46,7 +47,7 @@ if (Meteor.isClient) {
       return a;
     },
     "assignment": function() {
-      return Meteor.connection._lastSessionId;
+      return Session.get("userID");
     }
   });
 
