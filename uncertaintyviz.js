@@ -5,7 +5,6 @@ if (Meteor.isClient) {
   Questions = new Meteor.Collection('questions');
   Actions   = new Meteor.Collection('actions');
 
-
   Session.set("userID", Math.random().toString(36).slice(-8));
   Session.set("currentQuestion",1);
   Session.set("currentIntro",1);
@@ -86,7 +85,7 @@ if (Meteor.isClient) {
     "click .intro-next": function(){
       if(Session.get("currentIntro") <= 5) {
         $(".intro-next").fadeOut();
-        Session.set("a"+Session.get("currentIntro"), $(".intro-slider").attr("value"));
+        Session.set("a"+Session.get("intro")[Session.get("currentIntro")-1], $(".intro-slider").attr("value"));
         Session.set("currentIntro", Session.get("currentIntro")+1);
         $(".introduction").fadeOut(function(){
           if(Session.get("viz") == "blur") {
@@ -109,7 +108,6 @@ if (Meteor.isClient) {
         });
       }
       if(Session.get("currentIntro") > 5) {
-        Session.set("a"+Session.get("currentIntro"), $(".intro-slider").attr("value"));
         $(".img-middle").attr("src","viz/dum.png");
         var o = Session.get("questions");
         for(var j,x,i= o.length; i; j=Math.floor(Math.random()*i),x=o[--i],o[i]=o[j],o[j]=x);
@@ -296,27 +294,9 @@ if (Meteor.isClient) {
     },
     "click .dot.infinite": function(){
       Session.set("timestq", new Date());
-      if(Session.get("currentQuestion") == 3) {
-        $(".verify").fadeOut(function(){
-          $(".r1").fadeIn();
-        });
-      } else if(Session.get("currentQuestion") == 6) {
-        $(".verify").fadeOut(function(){
-          $(".r2").fadeIn();
-        });
-      } else if(Session.get("currentQuestion") == 9) {
-        $(".verify").fadeOut(function(){
-          $(".r3").fadeIn();
-        });
-      } else if(Session.get("currentQuestion") == 12) {
-        $(".verify").fadeOut(function(){
-          $(".r4").fadeIn();
-        });
-      } else {
-        $(".verify").fadeOut(function(){
-          $(".q"+Session.get("questions")[Session.get("currentQuestion")-1]).fadeIn();
-        });
-      }
+      $(".verify").fadeOut(function(){
+        $(".q"+Session.get("questions")[Session.get("currentQuestion")-1]).fadeIn();
+      });
     },
     "mousedown .intro-slider": function(){
       $(".intro-next").fadeIn();
@@ -409,24 +389,19 @@ if (Meteor.isClient) {
       $(".r-next").fadeIn();
     },
     "click .r-next": function(){
+      if(Session.get("currentQuestion") == 3) {
+        if($(".r-slider:visible").attr("value")!= 3) Session.set("trust", Session.get("trust")-1);
+      } else if(Session.get("currentQuestion") == 6) {
+        if($(".r-slider:visible").attr("value")!= 4) Session.set("trust", Session.get("trust")-1);
+      } else if(Session.get("currentQuestion") == 9) {
+        if($(".r-slider:visible").attr("value")!= 2) Session.set("trust", Session.get("trust")-1);
+      } else if(Session.get("currentQuestion") == 12) {
+        if($(".r-slider:visible").attr("value")!= 5) Session.set("trust", Session.get("trust")-1);
+      }
       $(".robot").fadeOut(function(){
         $(".r-next").fadeOut(function(){
-          if(Session.get("currentQuestion") == 3) {
-            $(".r1").remove();
-          } else if(Session.get("currentQuestion") == 6) {
-            $(".verify").fadeOut(function(){
-              $(".r2").remove();
-            });
-          } else if(Session.get("currentQuestion") == 9) {
-            $(".verify").fadeOut(function(){
-              $(".r3").remove();
-            });
-          } else if(Session.get("currentQuestion") == 12) {
-            $(".verify").fadeOut(function(){
-              $(".r4").remove();
-            });
-          }
-          $(".q"+Session.get("questions")[Session.get("currentQuestion")-1]).fadeIn();
+          $(".d"+Session.get("questions")[Session.get("currentQuestion")-1]).addClass("animated infinite flash");
+          $(".verify").fadeIn();
         });
       });
     },
@@ -460,22 +435,42 @@ if (Meteor.isClient) {
         "evaluation": Session.get("evaluation"),
         "viz": Session.get("viz")
       });
+
       /** Animate visualization **/
       $(".dot").removeClass("animated flash");
-      Session.set("q"+Session.get("currentQuestion"), $(".q-slider").attr("value"));
+      Session.set("q"+Session.get("questions")[Session.get("currentQuestion")-1], $(".q-slider:visible").attr("value"));
       /** Sum +1 **/
       Session.set("currentQuestion", Session.get("currentQuestion") + 1);
       /** ----- **/
-      $(".d"+Session.get("questions")[Session.get("currentQuestion")-1]).addClass("animated infinite flash");
       $(".question").fadeOut(function(){
         $(".button-next").fadeOut(function(){
-          $(".verify").fadeIn();
+          /** ----- **/
+          if(Session.get("currentQuestion") == 3) {
+            $(".verify").fadeOut(function(){
+              $(".r1").fadeIn();
+            });
+          } else if(Session.get("currentQuestion") == 6) {
+            $(".verify").fadeOut(function(){
+              $(".r2").fadeIn();
+            });
+          } else if(Session.get("currentQuestion") == 9) {
+            $(".verify").fadeOut(function(){
+              $(".r3").fadeIn();
+            });
+          } else if(Session.get("currentQuestion") == 12) {
+            $(".verify").fadeOut(function(){
+              $(".r4").fadeIn();
+            });
+          } else {
+            $(".d"+Session.get("questions")[Session.get("currentQuestion")-1]).addClass("animated infinite flash");
+            $(".verify").fadeIn();
+          }
         });
       });
     },
     'click .button-finish': function () {
       /*** START OF MONGODB Interaction ***/
-      Session.set("q"+Session.get("currentQuestion"), $(".q-slider").attr("value"));
+      Session.set("q"+Session.get("questions")[Session.get("currentQuestion")-1], $(".q-slider:visible").attr("value"));
       Questions.insert({
         "sessionId": Session.get("userID"),
         "question":  Session.get("currentQuestion"),
@@ -495,6 +490,7 @@ if (Meteor.isClient) {
         "timestampEd": new Date().getTime(),
         "timeSpent" : new Date().getTime() - Session.get("timest").getTime(),
         "evaluation": Session.get("evaluation"),
+        "trust": Session.get("trust"),
         "viz": Session.get("viz"),
         "q1": Session.get("q1"),
         "q2": Session.get("q2"),
