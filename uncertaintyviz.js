@@ -161,54 +161,54 @@ if (Meteor.isClient) {
             });
             if(Session.get("evaluation") == "regression") {
               /**** ULevel 1 ****/
-              $(".d1").css("top","87%");
-              $(".d1").css("left","13%");
+              $(".d1").css("top","68%");
+              $(".d1").css("right","80%");
               $(".d1").fadeIn();
-              $(".d2").css("top","53%");
-              $(".d2").css("left","80%");
+              $(".d2").css("top","50%");
+              $(".d2").css("left","50%");
               $(".d2").fadeIn();
-              $(".d3").css("top","67%");
-              $(".d3").css("left","30%");
+              $(".d3").css("top","41%");
+              $(".d3").css("right","27%");
               $(".d3").fadeIn();
               /**** ULevel 2 ****/
-              $(".d4").css("top","40%");
-              $(".d4").css("left","40%");
+              $(".d4").css("top","67%");
+              $(".d4").css("left","30%");
               $(".d4").fadeIn();
-              $(".d5").css("top","50%");
-              $(".d5").css("left","50%");
+              $(".d5").css("top","40%");
+              $(".d5").css("right","12%");
               $(".d5").fadeIn();
-              $(".d6").css("top","66%");
-              $(".d6").css("left","38%");
+              $(".d6").css("top","58%");
+              $(".d6").css("right","71%");
               $(".d6").fadeIn();
               /**** ULevel 3 ****/
-              $(".d7").css("top","28%");
-              $(".d7").css("left","70%");
+              $(".d7").css("top","38%");
+              $(".d7").css("right","38%");
               $(".d7").fadeIn();
-              $(".d8").css("top","58%");
-              $(".d8").css("right","71%");
+              $(".d8").css("top","22%");
+              $(".d8").css("right","8%");
               $(".d8").fadeIn();
-              $(".d9").css("top","40%");
-              $(".d9").css("right","12%");
+              $(".d9").css("top","66%");
+              $(".d9").css("left","38%");
               $(".d9").fadeIn();
               /**** ULevel 4 ****/
-              $(".d10").css("top","68%");
-              $(".d10").css("right","80%");
+              $(".d10").css("top","58%");
+              $(".d10").css("right","36%");
               $(".d10").fadeIn();
-              $(".d11").css("top","38%");
-              $(".d11").css("right","38%");
+              $(".d11").css("top","28%");
+              $(".d11").css("left","70%");
               $(".d11").fadeIn();
               $(".d12").css("top","80%");
               $(".d12").css("right","77%");
               $(".d12").fadeIn();
               /**** ULevel 5 ****/
-              $(".d13").css("top","58%");
-              $(".d13").css("right","36%");
+              $(".d13").css("top","87%");
+              $(".d13").css("left","13%");
               $(".d13").fadeIn();
-              $(".d14").css("top","22%");
-              $(".d14").css("right","8%");
+              $(".d14").css("top","53%");
+              $(".d14").css("left","80%");
               $(".d14").fadeIn();
-              $(".d15").css("top","41%");
-              $(".d15").css("right","27%");
+              $(".d15").css("top","40%");
+              $(".d15").css("left","40%");
               $(".d15").fadeIn();
               /***** outguys ****/
               $(".dx").css("top","80%");
