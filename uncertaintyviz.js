@@ -1,5 +1,6 @@
 if (Meteor.isClient) {
   //Data
+  //new Date(1382086394000);
   Users     = new Meteor.Collection('users');
   Intro     = new Meteor.Collection('intro');
   Questions = new Meteor.Collection('questions');
