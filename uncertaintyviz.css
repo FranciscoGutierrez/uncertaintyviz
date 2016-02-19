@@ -100,6 +100,7 @@ h3 {
 }
 
 .intro-next {
+  display: none;
   position: absolute;
   margin-top: 10px;
   border: 1px solid #bdc3c7;
@@ -110,7 +111,7 @@ h3 {
   display: none;
   position: absolute;
   right: 100px;
-  bottom: -40px;
+  bottom: -60px;
   border: 1px solid #bdc3c7;
 }
 
@@ -118,7 +119,7 @@ h3 {
   display: none;
   position: absolute;
   right: 100px;
-  bottom: -40px;
+  bottom: -60px;
   border: 1px solid #bdc3c7;
 }
 
@@ -277,4 +278,14 @@ a {
 
 .question h1 {
   /*max-width: 400px;*/
+}
+
+.slider {
+  width: 490px;
+}
+
+.slider-numbers {
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.6;
 }

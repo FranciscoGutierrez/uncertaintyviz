@@ -105,6 +105,7 @@ if (Meteor.isClient) {
             $(".img-middle").attr("src","viz/t"+Session.get("intro")[Session.get("currentIntro")-1]+".png");
           }
           $(".introduction").fadeIn();
+          $(".intro-slider").attr("value",3);
         });
       }
       if(Session.get("currentIntro") > 5) {
@@ -317,7 +318,7 @@ if (Meteor.isClient) {
         });
       }
     },
-    "click .intro-slider": function(){
+    "mousedown .intro-slider": function(){
       $(".intro-next").fadeIn();
     },
     "click .button-tut-next": function(){
@@ -404,7 +405,7 @@ if (Meteor.isClient) {
         });
       }
     },
-    "click .r-slider": function(){
+    "mousedown .r-slider": function(){
       $(".r-next").fadeIn();
     },
     "click .r-next": function(){
@@ -436,7 +437,7 @@ if (Meteor.isClient) {
         $(this).removeClass('animated flash');
       });
     },
-    "click .q-slider": function () {
+    "mousedown .q-slider": function () {
       if(Session.get("currentQuestion") < 15 ) {
         $(".button-next").fadeIn();
       } else {
@@ -474,6 +475,7 @@ if (Meteor.isClient) {
     },
     'click .button-finish': function () {
       /*** START OF MONGODB Interaction ***/
+      Session.set("q"+Session.get("currentQuestion"), $(".q-slider").attr("value"));
       Questions.insert({
         "sessionId": Session.get("userID"),
         "question":  Session.get("currentQuestion"),
@@ -529,13 +531,6 @@ if (Meteor.isClient) {
           }
         });
       });
-      // } else {
-      //   $("paper-radio-button").addClass('animated bounce');
-      //   var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-      //   $("paper-radio-button").one(animationEnd, function(){
-      //     $(this).removeClass('animated bounce');
-      //   });
-      // }
     }
   });
 }
