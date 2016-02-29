@@ -288,4 +288,6 @@ a {
   display: flex;
   justify-content: space-between;
   opacity: 0.6;
+  padding-left: 15px;
+  padding-right: 5px;
 }
