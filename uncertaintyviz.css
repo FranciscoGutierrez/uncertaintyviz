@@ -74,6 +74,7 @@ h3 {
   padding-top: 20px;
   padding-bottom: 20px;
   position: relative;
+  text-align: center;
 }
 
 .middle {
@@ -97,8 +98,12 @@ h3 {
   padding-top: 20px;
   padding-bottom: 20px;
   position: relative;
+  text-align: center;
 }
 
+.bottom paper-slider {
+  width: 100%;
+}
 .intro-next {
   display: none;
   position: absolute;
@@ -110,7 +115,7 @@ h3 {
 .button-next {
   display: none;
   position: absolute;
-  right: 100px;
+  right: 43%;
   bottom: -60px;
   border: 1px solid #bdc3c7;
 }
@@ -118,7 +123,7 @@ h3 {
 .r-next {
   display: none;
   position: absolute;
-  right: 100px;
+  right: 43%;
   bottom: -60px;
   border: 1px solid #bdc3c7;
 }
@@ -126,7 +131,7 @@ h3 {
 .button-finish {
   display: none;
   position: absolute;
-  right: 100px;
+  right: 43%;
   bottom: -60px;
   border: 1px solid #bdc3c7;
 }
@@ -241,6 +246,7 @@ a {
   font-size: 16px;
   margin-top: 8px;
   margin-bottom: 8px;
+  text-align: center;
 }
 
 .tutorial .tut-left {
@@ -281,7 +287,7 @@ a {
 }
 
 .slider {
-  width: 490px;
+  width: 100%;
 }
 
 .slider-numbers {
@@ -290,4 +296,8 @@ a {
   opacity: 0.6;
   padding-left: 15px;
   padding-right: 5px;
+}
+
+.thanks {
+  text-align: center;
 }

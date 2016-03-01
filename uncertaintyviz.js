@@ -311,7 +311,7 @@ if (Meteor.isClient) {
     'click .button-begin': function () {
       Session.set("timedot", new Date());
       $(".top h1").text("Guess the accuracy");
-      $(".top h2").text("Please, estimate the accuracy of the data point in the visualization.");
+      $(".top h2").text("Please, estimate the accuracy of the data point in the visualisation.");
       $(".tutorial").fadeOut(function(){
         $(".tutorial").remove();
       });
