@@ -440,9 +440,7 @@ if (Meteor.isClient) {
         "evaluation": Session.get("evaluation"),
         "viz": Session.get("viz")
       });
-
-      console.log(new Date().getTime() - Session.get("timedot").getTime());
-
+      Session.set("timedot", new Date());
       /** Animate visualization **/
       $(".dot").removeClass("animated flash");
       Session.set("q"+Session.get("questions")[Session.get("currentQuestion")-1], $(".q-slider:visible").attr("value"));
@@ -471,7 +469,6 @@ if (Meteor.isClient) {
           } else {
             $(".d"+Session.get("questions")[Session.get("currentQuestion")-1]).addClass("animated infinite flash");
             $(".verify").fadeIn();
-            Session.set("timedot", new Date());
           }
         });
       });
