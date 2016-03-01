@@ -12,6 +12,7 @@ if (Meteor.isClient) {
   Session.set("trust", "5");
   Session.setDefault("timest",new Date());
   Session.setDefault("timestq",new Date());
+  Session.setDefault("timedot", new Date());
   /*questions*/
   Session.setDefault("questions",[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]);
   Session.setDefault("intro",[1,2,3,4,5]);
@@ -308,6 +309,7 @@ if (Meteor.isClient) {
       });
     },
     'click .button-begin': function () {
+      Session.set("timedot", new Date());
       $(".top h1").text("Guess the accuracy");
       $(".top h2").text("Please, estimate the accuracy of the data point in the visualization.");
       $(".tutorial").fadeOut(function(){
@@ -390,6 +392,7 @@ if (Meteor.isClient) {
       $(".r-next").fadeIn();
     },
     "click .r-next": function(){
+      Session.set("timedot", new Date());
       if(Session.get("currentQuestion") == 3) {
         if($(".r-slider:visible").attr("value")!= 3) Session.set("trust", Session.get("trust")-1);
       } else if(Session.get("currentQuestion") == 6) {
@@ -432,10 +435,13 @@ if (Meteor.isClient) {
         "doty": 400 - $(".flash").position().top,
         "timestampSt": Session.get("timestq").getTime(),
         "timestampEd": new Date().getTime(),
+        "timedot": new Date().getTime() - Session.get("timedot").getTime(),
         "timespent": new Date().getTime() - Session.get("timestq").getTime(),
         "evaluation": Session.get("evaluation"),
         "viz": Session.get("viz")
       });
+
+      console.log(new Date().getTime() - Session.get("timedot").getTime());
 
       /** Animate visualization **/
       $(".dot").removeClass("animated flash");
@@ -465,6 +471,7 @@ if (Meteor.isClient) {
           } else {
             $(".d"+Session.get("questions")[Session.get("currentQuestion")-1]).addClass("animated infinite flash");
             $(".verify").fadeIn();
+            Session.set("timedot", new Date());
           }
         });
       });
@@ -480,10 +487,12 @@ if (Meteor.isClient) {
         "doty": 400 - $(".flash").position().top,
         "timestampSt": Session.get("timestq").getTime(),
         "timestampEd": new Date().getTime(),
+        "timedot": new Date().getTime() - Session.get("timedot").getTime(),
         "timespent": new Date().getTime() - Session.get("timestq").getTime(),
         "evaluation": Session.get("evaluation"),
         "viz": Session.get("viz")
       });
+
 
       Users.insert({
         "sessionId": Session.get("userID"),
