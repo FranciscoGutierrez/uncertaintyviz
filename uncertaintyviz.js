@@ -154,7 +154,7 @@ if (Meteor.isClient) {
           }
           /*** FADE IN CHART PART WITH DOTS AND EVERYTHING ***/
           $(".top h1").text("Estimate the accuracy");
-          $(".top h2").text("Please, estimate the accuracy of the flashing data point.");
+          $(".top h2").text("Please estimate the accuracy of the flashing data point.");
           $(".button-begin").fadeOut();
           $(".image").fadeIn(function(){
             $(".bottom").fadeIn(function(){
@@ -311,7 +311,7 @@ if (Meteor.isClient) {
     'click .button-begin': function () {
       Session.set("timedot", new Date());
       $(".top h1").text("Guess the accuracy");
-      $(".top h2").text("Please, estimate the accuracy of the data point in the visualisation.");
+      $(".top h2").text("Please estimate the accuracy of the data point in the visualisation.");
       $(".tutorial").fadeOut(function(){
         $(".tutorial").remove();
       });
