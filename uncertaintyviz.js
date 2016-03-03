@@ -430,7 +430,7 @@ if (Meteor.isClient) {
       Questions.insert({
         "sessionId": Session.get("userID"),
         "question":  Session.get("currentQuestion"),
-        "answer": $(".q-slider").attr("value"),
+        "answer": $(".q-slider:visible").attr("value"),
         "dotx": $(".flash").position().left,
         "doty": 400 - $(".flash").position().top,
         "timestampSt": Session.get("timestq").getTime(),
@@ -479,7 +479,7 @@ if (Meteor.isClient) {
       Questions.insert({
         "sessionId": Session.get("userID"),
         "question":  Session.get("currentQuestion"),
-        "answer": $(".q-slider").attr("value"),
+        "answer": $(".q-slider:visible").attr("value"),
         "dotx": $(".flash").position().left,
         "doty": 400 - $(".flash").position().top,
         "timestampSt": Session.get("timestq").getTime(),
