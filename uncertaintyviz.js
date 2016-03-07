@@ -427,6 +427,11 @@ if (Meteor.isClient) {
       /**
       * Save to the database;
       **/
+      var timedot = new Date().getTime() - Session.get("timedot").getTime();
+      var timespent = new Date().getTime() - Session.get("timestq").getTime();
+      Session.set("dt"+Session.get("questions")[Session.get("currentQuestion")-1], timedot);
+      Session.set("tq"+Session.get("questions")[Session.get("currentQuestion")-1], timespent);
+
       Questions.insert({
         "sessionId": Session.get("userID"),
         "question":  Session.get("questions")[Session.get("currentQuestion")-1],
@@ -435,8 +440,8 @@ if (Meteor.isClient) {
         "doty": 400 - $(".flash").position().top,
         "timestampSt": Session.get("timestq").getTime(),
         "timestampEd": new Date().getTime(),
-        "timedot": new Date().getTime() - Session.get("timedot").getTime(),
-        "timespent": new Date().getTime() - Session.get("timestq").getTime(),
+        "timedot": timedot,
+        "timespent": timespent,
         "evaluation": Session.get("evaluation"),
         "viz": Session.get("viz")
       });
@@ -475,6 +480,10 @@ if (Meteor.isClient) {
     },
     'click .button-finish': function () {
       /*** START OF MONGODB Interaction ***/
+      var timedot = new Date().getTime() - Session.get("timedot").getTime();
+      var timespent = new Date().getTime() - Session.get("timestq").getTime();
+      Session.set("dt"+Session.get("questions")[Session.get("currentQuestion")-1], timedot);
+      Session.set("tq"+Session.get("questions")[Session.get("currentQuestion")-1], timespent);
       Session.set("q"+Session.get("questions")[Session.get("currentQuestion")-1], $(".q-slider:visible").attr("value"));
       Questions.insert({
         "sessionId": Session.get("userID"),
@@ -484,8 +493,8 @@ if (Meteor.isClient) {
         "doty": 400 - $(".flash").position().top,
         "timestampSt": Session.get("timestq").getTime(),
         "timestampEd": new Date().getTime(),
-        "timedot": new Date().getTime() - Session.get("timedot").getTime(),
-        "timespent": new Date().getTime() - Session.get("timestq").getTime(),
+        "timedot": timedot,
+        "timespent": timespent,
         "evaluation": Session.get("evaluation"),
         "viz": Session.get("viz")
       });
@@ -518,7 +527,73 @@ if (Meteor.isClient) {
         "a2": Session.get("a2"),
         "a3": Session.get("a3"),
         "a4": Session.get("a4"),
-        "a5":Session.get("a5")
+        "a5": Session.get("a5"),
+        "q1_diff": Math.abs(Session.get("q1")-5),
+        "q2_diff": Math.abs(Session.get("q2")-5),
+        "q3_diff": Math.abs(Session.get("q3")-5),
+        "q4_diff": Math.abs(Session.get("q4")-4),
+        "q5_diff": Math.abs(Session.get("q5")-4),
+        "q6_diff": Math.abs(Session.get("q6")-4),
+        "q7_diff": Math.abs(Session.get("q7")-3),
+        "q8_diff": Math.abs(Session.get("q8")-3),
+        "q9_diff": Math.abs(Session.get("q9")-3),
+        "q10_diff": Math.abs(Session.get("q10")-2),
+        "q11_diff": Math.abs(Session.get("q11")-2),
+        "q12_diff": Math.abs(Session.get("q12")-2),
+        "q13_diff": Math.abs(Session.get("q13")-1),
+        "q14_diff": Math.abs(Session.get("q14")-1),
+        "q15_diff": Math.abs(Session.get("q15")-1),
+        "a1_diff": Math.abs(Session.get("a1")-1),
+        "a2_diff": Math.abs(Session.get("a2")-2),
+        "a3_diff": Math.abs(Session.get("a3")-3),
+        "a4_diff": Math.abs(Session.get("a4")-4),
+        "a5_diff": Math.abs(Session.get("a5")-5),
+        "L5_diff_mean": (Math.abs(Session.get("q1")-5) + Math.abs(Session.get("q2")-5) + Math.abs(Session.get("q3")-5))/3,
+        "L4_diff_mean": (Math.abs(Session.get("q4")-4) + Math.abs(Session.get("q5")-4) + Math.abs(Session.get("q6")-4))/3,
+        "L3_diff_mean": (Math.abs(Session.get("q7")-3) + Math.abs(Session.get("q8")-3) + Math.abs(Session.get("q9")-3))/3,
+        "L2_diff_mean": (Math.abs(Session.get("q10")-2) + Math.abs(Session.get("q11")-2) + Math.abs(Session.get("q12")-2))/3,
+        "L1_diff_mean": (Math.abs(Session.get("q13")-1) + Math.abs(Session.get("q14")-1) + Math.abs(Session.get("q15")-1))/3,
+        "diff_all_mean": (Math.abs(Session.get("q1")-5) + Math.abs(Session.get("q2")-5) + Math.abs(Session.get("q3")-5) + Math.abs(Session.get("q4")-4) + Math.abs(Session.get("q5")-4) + Math.abs(Session.get("q6")-4) + Math.abs(Session.get("q7")-3) + Math.abs(Session.get("q8")-3) + Math.abs(Session.get("q9")-3) + Math.abs(Session.get("q10")-2) + Math.abs(Session.get("q11")-2) + Math.abs(Session.get("q12")-2) + Math.abs(Session.get("q13")-1) + Math.abs(Session.get("q14")-1) + Math.abs(Session.get("q15")-1))/15,
+        "dot_time_q1": Session.get("dt1"),
+        "dot_time_q2": Session.get("dt2"),
+        "dot_time_q3": Session.get("dt3"),
+        "dot_time_q4": Session.get("dt4"),
+        "dot_time_q5": Session.get("dt5"),
+        "dot_time_q6": Session.get("dt6"),
+        "dot_time_q7": Session.get("dt7"),
+        "dot_time_q8": Session.get("dt8"),
+        "dot_time_q9": Session.get("dt9"),
+        "dot_time_q10":Session.get("dt10"),
+        "dot_time_q11":Session.get("dt11"),
+        "dot_time_q12":Session.get("dt12"),
+        "dot_time_q13":Session.get("dt13"),
+        "dot_time_q14":Session.get("dt14"),
+        "dot_time_q15":Session.get("dt15"),
+        "time_q1": Session.get("tq1"),
+        "time_q2": Session.get("tq2"),
+        "time_q3": Session.get("tq3"),
+        "time_q4": Session.get("tq4"),
+        "time_q5": Session.get("tq5"),
+        "time_q6": Session.get("tq6"),
+        "time_q7": Session.get("tq7"),
+        "time_q8": Session.get("tq8"),
+        "time_q9": Session.get("tq9"),
+        "time_q10":Session.get("tq10"),
+        "time_q11":Session.get("tq11"),
+        "time_q12":Session.get("tq12"),
+        "time_q13":Session.get("tq13"),
+        "time_q14":Session.get("tq14"),
+        "time_q15":Session.get("tq15"),
+        "dot_mean_L1": (Session.get("dt1") + Session.get("dt2") + Session.get("dt3"))/3,
+        "dot_mean_L2": (Session.get("dt4") + Session.get("dt5") + Session.get("dt6"))/3,
+        "dot_mean_L3": (Session.get("dt7") + Session.get("dt8") + Session.get("dt9"))/3,
+        "dot_mean_L4": (Session.get("dt10") + Session.get("dt11") + Session.get("dt12"))/3,
+        "dot_mean_L5": (Session.get("dt13") + Session.get("dt14") + Session.get("dt15"))/3,
+        "spent_mean_L1": (Session.get("tq1") + Session.get("tq2") + Session.get("tq3"))/3,
+        "spent_mean_L2": (Session.get("tq4") + Session.get("tq5") + Session.get("tq6"))/3,
+        "spent_mean_L3": (Session.get("tq7") + Session.get("tq8") + Session.get("tq9"))/3,
+        "spent_mean_L4": (Session.get("tq10") + Session.get("tq11") + Session.get("tq12"))/3,
+        "spent_mean_L5": (Session.get("tq13") + Session.get("tq14") + Session.get("tq15"))/3
       });
       /*** END OF MONGODB Interaction ***/
       $(".image").fadeOut();
