@@ -480,7 +480,7 @@ if (Meteor.isClient) {
     },
     'click .button-finish': function () {
       /*** START OF MONGODB Interaction ***/
-      var timedot = new Date().getTime() - Session.get("timedot").getTime();
+      var timedot   = new Date().getTime() - Session.get("timedot").getTime();
       var timespent = new Date().getTime() - Session.get("timestq").getTime();
       Session.set("dt"+Session.get("questions")[Session.get("currentQuestion")-1], timedot);
       Session.set("tq"+Session.get("questions")[Session.get("currentQuestion")-1], timespent);
