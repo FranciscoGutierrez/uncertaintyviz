@@ -1,6 +1,6 @@
 # Uncertainty Viz
 
-A simple WebApp made with Meteor.js to evaluate visualizations variables in uncertainty representations.
+A simple WebApp made with Meteor.js to evaluate visualization variables in uncertainty representations.
 
 # Introduction
 
