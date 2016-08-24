@@ -1,6 +1,6 @@
 # Uncertainty Viz
 
-A (tiny) WebApp to evaluate uncertainty representations.
+A (tiny) WebApp with Meteor.js to evaluate uncertainty representations.
 
 # Introduction
 
@@ -11,3 +11,8 @@ Information is presented to users in the form of graphical representations that 
 Usually, uncertainty leads to confusion and bad decisions, creates a wrong perception of reality and has a huge impact in the final knowledge. It is essential that visualizations communicate the inherent uncertainty in order to help the users to make well and informed decisions.
 
 # Screenshots
+
+<img src="public/sc1.png" />
+<img src="public/sc2.png" />
+<img src="public/sc3.png" />
+<img src="public/sc4.png" />
